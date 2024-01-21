@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{b9c448c8-06e6-4a36-8df4-5e9dcadacf5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj">
+      <UniqueIdentifier>{5ef40d1f-7706-448b-bcff-b647cfb55375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\00. Player">
+      <UniqueIdentifier>{3d3f9bdc-869a-437d-98e0-9966f4c13ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers">
+      <UniqueIdentifier>{117fa922-01ea-4c15-bd12-7d36cc62cdda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Mouse">
+      <UniqueIdentifier>{09e97ea8-d318-4ec7-ba0e-27e3edf74c57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\01. ObjMgr">
+      <UniqueIdentifier>{36494ace-39ff-4780-9a81-4fce3ba6f30a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\02. KeyMgr">
+      <UniqueIdentifier>{f0385a93-bf16-4a3e-85fa-d6df6827564d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\03. LineMgr">
+      <UniqueIdentifier>{8b0e3823-f270-4ca4-9e06-b1695b1b2177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\03. LineMgr\Line">
+      <UniqueIdentifier>{74409c16-aaed-4c54-854c-f3c084a3565e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="02. Managers\00. AbstactFactory">
+      <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene">
+      <UniqueIdentifier>{c3421280-6b2d-408c-a3a1-61d32e537edd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>01. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>02. Managers\02. KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMgr.h">
+      <Filter>02. Managers\03. LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>02. Managers\03. LineMgr\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>01. Obj\01. Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstactFactory.h">
+      <Filter>02. Managers\00. AbstactFactory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultWindow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>01. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>02. Managers\02. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMgr.cpp">
+      <Filter>02. Managers\03. LineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>02. Managers\03. LineMgr\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>01. Obj\01. Mouse</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DefaultWindow.rc">
+      <Filter>02. Managers\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>02. Managers\리소스 파일</Filter>
+    </Image>
+    <Image Include="DefaultWindow.ico">
+      <Filter>02. Managers\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
