@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstactFactory.h" />
+    <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="DefaultWindow.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="KeyMgr.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="LineMgr.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="MyBmp.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -160,12 +162,14 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="DefaultWindow.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="MyBmp.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
