@@ -56,7 +56,7 @@ void CPlayer::Key_Input()
 	{
 		m_tInfo.fX += m_fSpeed;
 		m_eDir = DIR_RIGHT;
-		if (CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
+		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
 			m_tInfo.fY = fY;
 	}
 
@@ -64,7 +64,7 @@ void CPlayer::Key_Input()
 	{
 		m_tInfo.fX -= m_fSpeed;
 		m_eDir = DIR_LEFT;
-		if (CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
+		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
 			m_tInfo.fY = fY;
 	}
 
