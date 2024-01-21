@@ -46,6 +46,12 @@
     <Filter Include="03. Scene">
       <UniqueIdentifier>{c3421280-6b2d-408c-a3a1-61d32e537edd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Managers\04. BmpMgr">
+      <UniqueIdentifier>{369d8de0-b645-4785-9136-8c7a97481ae9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\04. BmpMgr\MyBmp">
+      <UniqueIdentifier>{74baf175-48a2-4580-865e-54f0a538a1e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -90,6 +96,12 @@
     <ClInclude Include="AbstactFactory.h">
       <Filter>02. Managers\00. AbstactFactory</Filter>
     </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>02. Managers\04. BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>02. Managers\04. BmpMgr\MyBmp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -118,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>01. Obj\01. Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>02. Managers\04. BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>02. Managers\04. BmpMgr\MyBmp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
