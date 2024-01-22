@@ -68,6 +68,7 @@ void CPlayer::Render(HDC hDC)
 
 void CPlayer::Release()
 {
+
 }
 
 void CPlayer::Key_Input()
@@ -84,8 +85,7 @@ void CPlayer::Key_Input()
 		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
 			m_tInfo.fY = fY;
 	}
-
-	if (KEY_PRESS('A'))
+	else if (KEY_PRESS('A'))
 	{
 		m_tInfo.fX -= m_fSpeed;
 		m_pFrameKey = L"CharRun";
@@ -94,12 +94,19 @@ void CPlayer::Key_Input()
 		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
 			m_tInfo.fY = fY;
 	}
-	
-	//if ((KEY_DOWN('W'))||(KEY_DOWN(VK_SPACE)))
-	//	m_bJump = true;
-	
-	if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
+	else if ((KEY_DOWN('W')) || (KEY_DOWN(VK_SPACE)))
+	{
+		m_bJump = true;
+	}
+	else if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
+	{
 		m_bUnderJump = true;
+	}
+	else
+	{
+		m_pFrameKey = L"CharIdle";
+		m_eCurState = IDLE;
+	}
 }
 
 void CPlayer::Jump()
@@ -128,6 +135,7 @@ void CPlayer::Jump()
 	}
 
 }
+
 void CPlayer::UnderJump()
 {
 	float	fY(0.f);
@@ -154,6 +162,7 @@ void CPlayer::UnderJump()
 	}
 
 }
+
 void CPlayer::Motion_Change()
 {
 	if (m_ePreState != m_eCurState)
@@ -163,7 +172,6 @@ void CPlayer::Motion_Change()
 		case IDLE:
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 4;
-			m_tFrame.iMotion = 0;
 			m_tFrame.dwSpeed = 200;
 			m_tFrame.dwTime = GetTickCount();
 			break;

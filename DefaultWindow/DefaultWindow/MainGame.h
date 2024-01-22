@@ -18,7 +18,6 @@ public:
 
 private:
 	HDC			m_DC;
-	CObj*		m_pPlayer;
 	DWORD	    m_dwTime;
 
 	list<CObj*>		m_ObjList[END];

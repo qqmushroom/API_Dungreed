@@ -2,17 +2,16 @@
 #include "MainGame.h"
 #include "BmpMgr.h"
 #include "Mouse.h"
-
 #include "Obj.h"
-
 #include "AbstactFactory.h"
 #include "LineMgr.h"
 #include "KeyMgr.h"
 
 
 CMainGame::CMainGame()
-	: m_dwTime(GetTickCount()), m_pPlayer(nullptr)
+	: m_dwTime(GetTickCount()) 
 {
+
 }
 
 CMainGame::~CMainGame()
@@ -24,19 +23,24 @@ void CMainGame::Initialize()
 {
 	m_DC = GetDC(g_hWnd);
 
-	if (!m_pPlayer)
-	{
-		m_pPlayer = new CPlayer;
-		m_pPlayer->Initialize();
-	}
 	CLineMgr::Get_Instance()->Initialize();
-	m_ObjList[MOUSE].push_back(CAbstractFactory<CMouse>::Create());
+
+	CObj*pPlayer = new CPlayer;
+	pPlayer->Initialize();
+	m_ObjList[PLAYER].push_back(pPlayer);
+	
+	// 2024.01.22 bskim: 마우스 호출하는데 있어 추상팩토리 이해하지 못해 사용x, Obj리스트 PLAYER에 데이터 비어있었음.
+
+	CObj*pMouse = new CMouse;
+	pMouse ->Initialize();
+	m_ObjList[MOUSE].push_back(pMouse);
+	
 }
 
 void CMainGame::Update()
 {
-	m_pPlayer->Update();
-
+	// 2024.01.22 bskim: 밑에 obj리스트로는 그전에 마우스만 호출, 플레이어는 데이터 없었기에 계속 cobj* m_pPlayer라는 변수 따로 만들어 Update, Render 마다 호출했었음.
+	// 2024.01.22 bskim: 위와같은 이유에 추가로 디폴트윈도우 cpp에 LateUpdate 메인게임에 추가하지 않아 플레이어의 애니매이션이 제대로 동작하지 못함. 
 	for (size_t i = 0; i < END; ++i)
 	{
 		for (auto iter = m_ObjList[i].begin();
@@ -57,6 +61,7 @@ void CMainGame::Update()
 
 void CMainGame::Late_Update()
 {
+
 	for (size_t i = 0; i < END; ++i)
 	{
 		for (auto& iter : m_ObjList[i])
@@ -67,8 +72,6 @@ void CMainGame::Late_Update()
 void CMainGame::Render()
 {
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
-	
-	m_pPlayer->Render(m_DC);
 
 	for (size_t i = 0; i < END; ++i)
 	{
@@ -81,7 +84,6 @@ void CMainGame::Render()
 
 void CMainGame::Release()
 {
-	Safe_Delete<CObj*>(m_pPlayer);
 
 	for (size_t i = 0; i < END; ++i)
 	{
