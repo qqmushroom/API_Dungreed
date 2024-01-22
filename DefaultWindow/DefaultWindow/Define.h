@@ -1,7 +1,7 @@
 #pragma once
 
-#define WINCX		800
-#define WINCY		600
+#define WINCX		960
+#define WINCY		540
 
 #define PURE		= 0
 
@@ -34,6 +34,16 @@ typedef struct tagInfo
 	float	fCY;
 
 }INFO;
+
+typedef struct tagFrame
+{
+	int		iFrameStart;
+	int		iFrameEnd;
+	int		iMotion;
+	DWORD	dwSpeed;
+	DWORD	dwTime;
+
+}FRAME;
 
 typedef struct tagLingPoint
 {
@@ -68,7 +78,6 @@ enum SCENEID
 {
 	STAGE_1,
 	STAGE_2,
-	STAGE_3,
 	STAGE_END
 };
 enum DIRECTION
@@ -80,6 +89,21 @@ enum DIRECTION
 	DIR_END
 };
 
+struct tagFinder
+{
+public:
+	tagFinder(const TCHAR* pString) : m_pString(pString) {}
+
+public:
+	template<typename T>
+	bool operator()(T& Pair)
+	{
+		return !lstrcmp(m_pString, Pair.first);
+	}
+
+private:
+	const TCHAR*		m_pString;
+};
 
 
 extern HWND g_hWnd;

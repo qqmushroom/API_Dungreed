@@ -25,6 +25,8 @@ public:
 
 protected:
 	void		Update_Rect();
+	void		Move_Frame();
+	FRAME		m_tFrame;
 
 protected:
 	INFO		m_tInfo;
@@ -33,5 +35,6 @@ protected:
 
 	float		m_fSpeed;
 
+	TCHAR*		m_pFrameKey;
 };
 

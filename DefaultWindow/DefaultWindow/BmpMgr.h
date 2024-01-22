@@ -15,7 +15,7 @@ public:
 	void		Release();
 
 public:
-	static CBmpMgr* GetInstance()
+	static CBmpMgr* Get_Instance()
 	{
 		if (!m_pInstance)
 			m_pInstance = new CBmpMgr;
@@ -23,7 +23,7 @@ public:
 		return m_pInstance;
 	}
 
-	static void		DestroyInstance()
+	static void		Destroy_Instance()
 	{
 		if (m_pInstance)
 		{

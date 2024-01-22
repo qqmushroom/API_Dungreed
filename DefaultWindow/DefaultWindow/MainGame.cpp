@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MainGame.h"
-
+#include "BmpMgr.h"
 #include "Mouse.h"
 
 #include "Obj.h"
@@ -91,6 +91,7 @@ void CMainGame::Release()
 
 	CKeyMgr::Destroy_Instance();
 	CLineMgr::Destroy_Instance();
+	CBmpMgr::Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 }
