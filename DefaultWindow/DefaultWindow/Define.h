@@ -71,6 +71,7 @@ enum	OBJID
 {
 	PLAYER,
 	MOUSE,
+	WEAPON,
 	END
 };
 

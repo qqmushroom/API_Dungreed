@@ -6,6 +6,7 @@
 #include "AbstactFactory.h"
 #include "LineMgr.h"
 #include "KeyMgr.h"
+#include "Weapon.h"
 
 
 CMainGame::CMainGame()
@@ -34,6 +35,16 @@ void CMainGame::Initialize()
 	CObj*pMouse = new CMouse;
 	pMouse ->Initialize();
 	m_ObjList[MOUSE].push_back(pMouse);
+
+
+	//CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/Ground.bmp", L"Ground");
+
+	/*
+	CObj * pWeapon = new CWeapon;
+	pWeapon->Initialize();
+	m_ObjList[WEAPON].push_back(pWeapon);
+	*/
+	// dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Weapon(&m_ObjList[WEAPON]);
 	
 }
 
@@ -80,6 +91,9 @@ void CMainGame::Render()
 	}
 
 	CLineMgr::Get_Instance()->Render(m_DC);
+	//HDC hMemDC = CBmpMgr::Get_Instance()->Get_Image(L"Ground");
+	//HDC hGroundDC = CBmpMgr::Get_Instance()->Get_Image(L"TestBackGround");
+	//BitBlt(m_DC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 }
 
 void CMainGame::Release()

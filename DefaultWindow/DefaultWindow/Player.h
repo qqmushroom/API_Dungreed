@@ -10,6 +10,9 @@ public:
 	virtual ~CPlayer();
 
 public:
+	// void	Set_Weapon(list<CObj*>* pWeapon) { m_pWeapon = pWeapon; } 
+
+public:
 	virtual void Initialize() override;
 	virtual int Update() override;
 	virtual void Late_Update() override;
@@ -21,6 +24,8 @@ private:
 	void		Jump();
 	void        UnderJump();
 	void		Motion_Change();
+	//void        Player_Attack();
+	
 
 
 	bool			m_bJump;		// 점프 상태 확인
@@ -30,5 +35,8 @@ private:
 
 	STATE			m_ePreState;
 	STATE			m_eCurState;
-};
+
+	//list<CObj*>*	m_pWeapon;
+	//list<CObj*>	m_ObjList[END];
+	};
 

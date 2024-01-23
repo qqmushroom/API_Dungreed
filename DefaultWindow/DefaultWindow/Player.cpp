@@ -5,6 +5,9 @@
 #include "KeyMgr.h"
 #include "BmpMgr.h"
 #include "Define.h"
+#include "Weapon.h"
+#include "Obj.h"
+
 CPlayer::CPlayer()
 	:m_bJump(false), m_bUnderJump(false), m_fJumpPower(0.f), m_fTime(0.f), m_ePreState(ST_END), m_eCurState(IDLE)
 {
@@ -28,6 +31,7 @@ void CPlayer::Initialize()
 	m_pFrameKey = L"CharIdle";
 
 	m_tFrame = { 0, 4, 0, 200, GetTickCount() };
+
 }
 
 int CPlayer::Update()
@@ -101,6 +105,10 @@ void CPlayer::Key_Input()
 	else if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
 	{
 		m_bUnderJump = true;
+	}
+	else if (KEY_PRESS(VK_LBUTTON))
+	{
+		//Player_Attack();
 	}
 	else
 	{
@@ -196,3 +204,4 @@ void CPlayer::Motion_Change()
 	}
 
 }
+

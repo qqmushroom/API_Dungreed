@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Mouse.h"
+#include "BmpMgr.h"
 
 
 CMouse::CMouse()
@@ -14,8 +15,13 @@ CMouse::~CMouse()
 
 void CMouse::Initialize()
 {
-	m_tInfo.fCX = 40.f;
-	m_tInfo.fCY = 40.f;
+	m_tInfo.fCX = 63.f;
+	m_tInfo.fCY = 63.f;
+	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Ui/ShootingCursor.bmp", L"ShootingCursor");
+
+	m_pFrameKey = L"ShootingCursor";
+
+	m_tFrame = { 0, 0, 0, 200, GetTickCount() };
 }
 
 int CMouse::Update()
@@ -44,7 +50,19 @@ void CMouse::Late_Update()
 
 void CMouse::Render(HDC hDC)
 {
-	Ellipse(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+	HDC hMemDC = CBmpMgr::Get_Instance()->Get_Image(m_pFrameKey);
+
+	GdiTransparentBlt(hDC,
+		m_tRect.left, //+ iScrollX,
+		m_tRect.top, //+ iScrollY,
+		(int)m_tInfo.fCX,
+		(int)m_tInfo.fCY,
+		hMemDC,
+		m_tFrame.iFrameStart * (int)m_tInfo.fCX,
+		m_tFrame.iMotion * (int)m_tInfo.fCY,
+		(int)m_tInfo.fCX, // 복사할 비트맵의 가로, 세로 길이
+		(int)m_tInfo.fCY,
+		RGB(255, 0, 255));	// 제거하고자 하는 색상을 전달
 }
 
 void CMouse::Release()
