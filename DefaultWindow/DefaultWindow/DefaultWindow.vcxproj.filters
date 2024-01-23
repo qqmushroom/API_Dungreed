@@ -52,6 +52,9 @@
     <Filter Include="02. Managers\04. BmpMgr\MyBmp">
       <UniqueIdentifier>{74baf175-48a2-4580-865e-54f0a538a1e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\02. Weapon">
+      <UniqueIdentifier>{0460b19f-09a9-4dac-acd2-976a30ba4267}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -102,6 +105,9 @@
     <ClInclude Include="MyBmp.h">
       <Filter>02. Managers\04. BmpMgr\MyBmp</Filter>
     </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>01. Obj\02. Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="MyBmp.cpp">
       <Filter>02. Managers\04. BmpMgr\MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>01. Obj\02. Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
