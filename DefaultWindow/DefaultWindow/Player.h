@@ -1,5 +1,6 @@
 #pragma once
 #include "Obj.h"
+#include "Weapon.h"
 class CPlayer :	public CObj
 {
 public:
@@ -10,21 +11,25 @@ public:
 	virtual ~CPlayer();
 
 public:
-	// void	Set_Weapon(list<CObj*>* pWeapon) { m_pWeapon = pWeapon; } 
-
-public:
 	virtual void Initialize() override;
 	virtual int Update() override;
 	virtual void Late_Update() override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
 
+public:
+	virtual void AddWeapon(CWeapon* pWeapon) 
+	{
+		m_vecWeapon.push_back(pWeapon);
+	}
+
 private:
 	void		Key_Input();
 	void		Jump();
 	void        UnderJump();
 	void		Motion_Change();
-	//void        Player_Attack();
+	void		Offset();
+
 	
 
 
@@ -36,7 +41,8 @@ private:
 	STATE			m_ePreState;
 	STATE			m_eCurState;
 
-	//list<CObj*>*	m_pWeapon;
+	vector<CWeapon*>  m_vecWeapon;
+	int m_iCurWeaponIndex = 0;
 	//list<CObj*>	m_ObjList[END];
 	};
 

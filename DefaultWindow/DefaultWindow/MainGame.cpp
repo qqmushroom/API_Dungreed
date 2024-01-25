@@ -7,6 +7,8 @@
 #include "LineMgr.h"
 #include "KeyMgr.h"
 #include "Weapon.h"
+#include "Sword.h"
+#include "ScrollMgr.h"
 
 
 CMainGame::CMainGame()
@@ -26,18 +28,29 @@ void CMainGame::Initialize()
 
 	CLineMgr::Get_Instance()->Initialize();
 
+	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/back.bmp", L"back");
+	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/dungeon_boss.bmp", L"dungeon_boss");
+
+	//CObj*pPlayer = new CPlayer;
+	//pPlayer->Initialize();
+	//m_ObjList[PLAYER].push_back(pPlayer);
+	
+	// 2024.01.22 bskim: 마우스 호출하는데 있어 추상팩토리 이해하지 못해 사용x, Obj리스트 PLAYER에 데이터 비어있었음.
+
 	CObj*pPlayer = new CPlayer;
 	pPlayer->Initialize();
 	m_ObjList[PLAYER].push_back(pPlayer);
-	
-	// 2024.01.22 bskim: 마우스 호출하는데 있어 추상팩토리 이해하지 못해 사용x, Obj리스트 PLAYER에 데이터 비어있었음.
+
 
 	CObj*pMouse = new CMouse;
 	pMouse ->Initialize();
 	m_ObjList[MOUSE].push_back(pMouse);
 
+	CWeapon* pWeapon = new CSword();
+	pWeapon->Initialize();
 
-	//CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/Ground.bmp", L"Ground");
+	pWeapon->AttachToPlayer(dynamic_cast<CPlayer*>(pPlayer));
+	m_ObjList[WEAPON].push_back(pWeapon);
 
 	/*
 	CObj * pWeapon = new CWeapon;
@@ -82,7 +95,13 @@ void CMainGame::Late_Update()
 
 void CMainGame::Render()
 {
-	Rectangle(m_DC, 0, 0, WINCX, WINCY);
+	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+	int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
+
+	HDC hMemDC = CBmpMgr::Get_Instance()->Get_Image(L"back");
+	HDC hGroundDC = CBmpMgr::Get_Instance()->Get_Image(L"dungeon_boss");
+	BitBlt(hMemDC, iScrollX, iScrollY, 1280, 720, hGroundDC, 0, 0, SRCCOPY);
+	BitBlt(m_DC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 
 	for (size_t i = 0; i < END; ++i)
 	{
@@ -91,9 +110,6 @@ void CMainGame::Render()
 	}
 
 	CLineMgr::Get_Instance()->Render(m_DC);
-	//HDC hMemDC = CBmpMgr::Get_Instance()->Get_Image(L"Ground");
-	//HDC hGroundDC = CBmpMgr::Get_Instance()->Get_Image(L"TestBackGround");
-	//BitBlt(m_DC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 }
 
 void CMainGame::Release()

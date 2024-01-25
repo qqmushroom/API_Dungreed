@@ -6,7 +6,9 @@
 #include "BmpMgr.h"
 #include "Define.h"
 #include "Weapon.h"
+#include "Sword.h"
 #include "Obj.h"
+#include "ScrollMgr.h"
 
 CPlayer::CPlayer()
 	:m_bJump(false), m_bUnderJump(false), m_fJumpPower(0.f), m_fTime(0.f), m_ePreState(ST_END), m_eCurState(IDLE)
@@ -32,6 +34,7 @@ void CPlayer::Initialize()
 
 	m_tFrame = { 0, 4, 0, 200, GetTickCount() };
 
+
 }
 
 int CPlayer::Update()
@@ -48,18 +51,21 @@ void CPlayer::Late_Update()
 {
 	Move_Frame();
 	Motion_Change();
+	Offset();
 }
 
 void CPlayer::Render(HDC hDC)
 {
-	//int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
-	//int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
+	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+	int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 
+
+	
 	HDC hMemDC = CBmpMgr::Get_Instance()->Get_Image(m_pFrameKey);
 
 	GdiTransparentBlt(hDC,
-		m_tRect.left, //+ iScrollX,
-		m_tRect.top, //+ iScrollY,
+		m_tRect.left + iScrollX,
+		m_tRect.top + iScrollY,
 		(int)m_tInfo.fCX,
 		(int)m_tInfo.fCY,
 		hMemDC,
@@ -68,6 +74,8 @@ void CPlayer::Render(HDC hDC)
 		(int)m_tInfo.fCX, // 복사할 비트맵의 가로, 세로 길이
 		(int)m_tInfo.fCY,
 		RGB(255, 0, 255));	// 제거하고자 하는 색상을 전달
+
+
 }
 
 void CPlayer::Release()
@@ -108,7 +116,10 @@ void CPlayer::Key_Input()
 	}
 	else if (KEY_PRESS(VK_LBUTTON))
 	{
-		//Player_Attack();
+		if (!m_vecWeapon[m_iCurWeaponIndex]->GetIsAttack())
+		{
+			m_vecWeapon[m_iCurWeaponIndex]->Attack();
+		}
 	}
 	else
 	{
@@ -125,7 +136,7 @@ void CPlayer::Jump()
 
 	if (m_bJump)
 	{
-		m_tInfo.fY -= (m_fJumpPower * m_fTime/*sin(m_fAngle)*/) - (9.8f * m_fTime * m_fTime * 0.5f);
+		m_tInfo.fY -= (m_fJumpPower * m_fTime/*sin(m_fAngle)*/) - (9.8f * m_fTime * m_fTime * 0.6f);
 
 		m_fTime += 0.1f;
 
@@ -204,4 +215,16 @@ void CPlayer::Motion_Change()
 	}
 
 }
+void CPlayer::Offset()
+{
+	int	iOffsetminX = 100;
+    int	iOffsetmaxX = 700;
 
+    int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+
+if (iOffsetminX > m_tInfo.fX + iScrollX)
+CScrollMgr::Get_Instance()->Set_ScrollX(m_fSpeed);
+
+if (iOffsetmaxX < m_tInfo.fX + iScrollX)
+	CScrollMgr::Get_Instance()->Set_ScrollX(-m_fSpeed);
+}

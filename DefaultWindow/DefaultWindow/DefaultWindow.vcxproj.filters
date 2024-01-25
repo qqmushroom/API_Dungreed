@@ -43,9 +43,6 @@
     <Filter Include="02. Managers\00. AbstactFactory">
       <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Scene">
-      <UniqueIdentifier>{c3421280-6b2d-408c-a3a1-61d32e537edd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Managers\04. BmpMgr">
       <UniqueIdentifier>{369d8de0-b645-4785-9136-8c7a97481ae9}</UniqueIdentifier>
     </Filter>
@@ -54,6 +51,15 @@
     </Filter>
     <Filter Include="01. Obj\02. Weapon">
       <UniqueIdentifier>{0460b19f-09a9-4dac-acd2-976a30ba4267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Weapon\00. Sword">
+      <UniqueIdentifier>{fb8380dd-14af-4b4d-aa4b-e5300d03ea02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\05. ScrollMgr">
+      <UniqueIdentifier>{285541cb-0c1e-4922-8c8b-ea64fe0298be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\리소스 파일\03. Scene">
+      <UniqueIdentifier>{c3421280-6b2d-408c-a3a1-61d32e537edd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +114,12 @@
     <ClInclude Include="Weapon.h">
       <Filter>01. Obj\02. Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>01. Obj\02. Weapon\00. Sword</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollMgr.h">
+      <Filter>02. Managers\05. ScrollMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>01. Obj\02. Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>01. Obj\02. Weapon\00. Sword</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollMgr.cpp">
+      <Filter>02. Managers\05. ScrollMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
