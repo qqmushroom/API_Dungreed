@@ -2,7 +2,6 @@
 #include "Sword.h"
 #include "BmpMgr.h"
 
-
 CSword::CSword()
 {
 }
@@ -25,7 +24,7 @@ void CSword::Initialize()
 
 	m_tFrame = { 0, 0, 0, 200, GetTickCount() };
 
-	m_dwAttackTime = 3000;
+	m_dwAttackTime = 1000;
 }
 
 int CSword::Update()
@@ -52,9 +51,12 @@ void CSword::Render(HDC hDC)
 {
 	CWeapon::Render(hDC);
 	
+	if (m_bIsAttack)
+	{
 		RECT tAttackRect = MakeAttackRect();
 
 		Ellipse(hDC, tAttackRect.left, tAttackRect.top, tAttackRect.right, tAttackRect.bottom);
+	}
 }
 
 void CSword::Release()
@@ -79,6 +81,6 @@ void CSword::Attack()
 	m_tAttackStartInfo.fX = (float)ptMouse.x;
 	m_tAttackStartInfo.fY = (float)ptMouse.y;
 
-	m_dwAttackStartTime = 0; 
+	m_dwAttackStartTime = GetTickCount();
 	m_bIsAttack = true;
 }

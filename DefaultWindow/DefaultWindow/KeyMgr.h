@@ -14,7 +14,7 @@ public:
 	bool		Key_Pressing(int _iKey);
 
 public:
-	static CKeyMgr* GetInstance()
+	static CKeyMgr* Get_Instance()
 	{
 		if (!m_pInstance)
 			m_pInstance = new CKeyMgr;

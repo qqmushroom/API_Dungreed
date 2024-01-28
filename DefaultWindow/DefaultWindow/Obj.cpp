@@ -2,7 +2,7 @@
 #include "Obj.h"
 
 
-CObj::CObj() : m_fSpeed(0.f), m_pFrameKey(nullptr)
+CObj::CObj() : m_fSpeed(0.f), m_pFrameKey(nullptr), m_bDead(false), m_fAngle(0.f), m_fDistance(0.f), m_pTarget(nullptr)
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
 	ZeroMemory(&m_tRect, sizeof(RECT));

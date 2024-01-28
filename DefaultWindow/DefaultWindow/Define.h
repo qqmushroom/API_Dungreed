@@ -3,6 +3,15 @@
 #define WINCX		800
 #define WINCY		600
 
+#define SCROLL_OFFSET_MIN_X 150
+#define SCROLL_OFFSET_MAX_X 650
+
+#define SCROLL_OFFSET_MIN_Y 150
+#define SCROLL_OFFSET_MAX_Y 450
+
+#define STAGE_MIN_X 150
+#define STAGE_MAX_X 1130
+
 #define PURE		= 0
 
 #define OBJ_NOEVENT		0
@@ -10,9 +19,9 @@
 
 #define VK_MAX			0xff
 
-#define KEY_DOWN(key)	CKeyMgr::GetInstance()->Key_Down(key)
-#define KEY_UP(key)		CKeyMgr::GetInstance()->Key_Up(key)
-#define KEY_PRESS(key)	CKeyMgr::GetInstance()->Key_Pressing(key)
+#define KEY_DOWN(key)	CKeyMgr::Get_Instance()->Key_Down(key)
+#define KEY_UP(key)		CKeyMgr::Get_Instance()->Key_Up(key)
+#define KEY_PRESS(key)	CKeyMgr::Get_Instance()->Key_Pressing(key)
 
 #define PI				(3.14f)
 #define GRAVITY			(9.8f)
@@ -72,15 +81,18 @@ enum	OBJID
 	PLAYER,
 	MOUSE,
 	WEAPON,
+	BOSS,
+	BUTTON,
+	FLOOR,
 	END
 };
 
-enum SCENEID
-{
-	STAGE_1,
-	STAGE_2,
-	STAGE_END
-};
+//enum SCENEID
+//{
+//	STAGE_1,
+//	STAGE_2,
+//	STAGE_END
+//};
 enum DIRECTION
 {
 	DIR_LEFT,

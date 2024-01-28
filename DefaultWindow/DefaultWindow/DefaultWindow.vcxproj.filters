@@ -40,9 +40,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="02. Managers\00. AbstactFactory">
-      <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Managers\04. BmpMgr">
       <UniqueIdentifier>{369d8de0-b645-4785-9136-8c7a97481ae9}</UniqueIdentifier>
     </Filter>
@@ -58,8 +55,32 @@
     <Filter Include="02. Managers\05. ScrollMgr">
       <UniqueIdentifier>{285541cb-0c1e-4922-8c8b-ea64fe0298be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Managers\리소스 파일\03. Scene">
-      <UniqueIdentifier>{c3421280-6b2d-408c-a3a1-61d32e537edd}</UniqueIdentifier>
+    <Filter Include="01. Obj\03. Boss">
+      <UniqueIdentifier>{88869e35-398b-4646-bbfe-94e677f680d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\06. CollisionMgr">
+      <UniqueIdentifier>{e2d476f9-5a44-4fa7-828a-0c80cd528814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\07. SceneMgr">
+      <UniqueIdentifier>{894171b8-0e30-4031-bab2-715955222ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Box">
+      <UniqueIdentifier>{082d9c6c-7d2e-497c-b932-87f01b04bf1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Button">
+      <UniqueIdentifier>{b5421219-5e4d-4808-9ba0-3438d121c12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene">
+      <UniqueIdentifier>{7fd1ef7e-7162-41ab-b47c-ee94e9f6b620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\01. Menu">
+      <UniqueIdentifier>{3dfd36f0-d7c2-45e6-9c64-ab62e97e1383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\02. Stage">
+      <UniqueIdentifier>{477a179e-d501-4ab7-a67f-f776aae8f5af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Managers\00. AbstractFactory">
+      <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +91,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="DefaultWindow.h">
@@ -96,14 +114,8 @@
     <ClInclude Include="LineMgr.h">
       <Filter>02. Managers\03. LineMgr</Filter>
     </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>02. Managers\03. LineMgr\Line</Filter>
-    </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>01. Obj\01. Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="AbstactFactory.h">
-      <Filter>02. Managers\00. AbstactFactory</Filter>
     </ClInclude>
     <ClInclude Include="BmpMgr.h">
       <Filter>02. Managers\04. BmpMgr</Filter>
@@ -119,6 +131,42 @@
     </ClInclude>
     <ClInclude Include="ScrollMgr.h">
       <Filter>02. Managers\05. ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>02. Managers\03. LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>01. Obj\03. Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>02. Managers\06. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>02. Managers\07. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>01. Obj\04. Box</Filter>
+    </ClInclude>
+    <ClInclude Include="MyButton.h">
+      <Filter>01. Obj\05. Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMenu.h">
+      <Filter>03. Scene\01. Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1.h">
+      <Filter>03. Scene\02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>02. Managers\01. ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>02. Managers\00. AbstractFactory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +211,33 @@
     </ClCompile>
     <ClCompile Include="ScrollMgr.cpp">
       <Filter>02. Managers\05. ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>01. Obj\03. Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>02. Managers\01. ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>02. Managers\06. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>02. Managers\07. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>01. Obj\04. Box</Filter>
+    </ClCompile>
+    <ClCompile Include="MyButton.cpp">
+      <Filter>01. Obj\05. Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>03. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMenu.cpp">
+      <Filter>03. Scene\01. Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1.cpp">
+      <Filter>03. Scene\02. Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

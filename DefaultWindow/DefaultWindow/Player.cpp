@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
-#include "AbstactFactory.h"
+#include "AbstractFactory.h"
 #include "LineMgr.h"
 #include "KeyMgr.h"
 #include "BmpMgr.h"
@@ -23,8 +23,8 @@ CPlayer::~CPlayer()
 
 void CPlayer::Initialize()
 {
-	m_tInfo = { WINCX / 2.f, WINCY / 2.f, 78.f, 75.f };
-	m_fSpeed = 10.f;
+	m_tInfo = { 200.f, 450.f, 78.f, 75.f };
+	m_fSpeed = 7.f;
 	m_fJumpPower = 16.f;
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Idle/CharIdle.bmp", L"CharIdle");
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Run/CharRun.bmp", L"CharRun");
@@ -91,6 +91,7 @@ void CPlayer::Key_Input()
 	if (KEY_PRESS('D'))
 	{
 		m_tInfo.fX += m_fSpeed;
+		m_tInfo.fX = min(m_tInfo.fX, STAGE_MAX_X);
 		m_pFrameKey = L"CharRun";
 		m_eCurState = RUN;
 		m_eDir = DIR_RIGHT;
@@ -100,32 +101,37 @@ void CPlayer::Key_Input()
 	else if (KEY_PRESS('A'))
 	{
 		m_tInfo.fX -= m_fSpeed;
+		m_tInfo.fX = max(m_tInfo.fX, STAGE_MIN_X);   //2024.01.26 bskim: min, max 함수를 이용해 최대 움직임 고정(디파인으로 값 설정)
 		m_pFrameKey = L"CharRun";
 		m_eCurState = RUN2;
 		m_eDir = DIR_LEFT;
 		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
 			m_tInfo.fY = fY;
 	}
-	else if ((KEY_DOWN('W')) || (KEY_DOWN(VK_SPACE)))
+	else
+	{
+		m_pFrameKey = L"CharIdle";
+		m_eCurState = IDLE;
+	}
+
+	if ((KEY_DOWN('W')) || (KEY_DOWN(VK_SPACE)))
 	{
 		m_bJump = true;
 	}
+
 	else if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
 	{
 		m_bUnderJump = true;
 	}
-	else if (KEY_PRESS(VK_LBUTTON))
+
+	if (KEY_PRESS(VK_LBUTTON))
 	{
 		if (!m_vecWeapon[m_iCurWeaponIndex]->GetIsAttack())
 		{
 			m_vecWeapon[m_iCurWeaponIndex]->Attack();
 		}
 	}
-	else
-	{
-		m_pFrameKey = L"CharIdle";
-		m_eCurState = IDLE;
-	}
+	
 }
 
 void CPlayer::Jump()
@@ -217,14 +223,18 @@ void CPlayer::Motion_Change()
 }
 void CPlayer::Offset()
 {
-	int	iOffsetminX = 100;
-    int	iOffsetmaxX = 700;
-
     int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+	int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 
-if (iOffsetminX > m_tInfo.fX + iScrollX)
+if (SCROLL_OFFSET_MIN_X  > m_tInfo.fX + iScrollX)
 CScrollMgr::Get_Instance()->Set_ScrollX(m_fSpeed);
 
-if (iOffsetmaxX < m_tInfo.fX + iScrollX)
+if (SCROLL_OFFSET_MAX_X  < m_tInfo.fX + iScrollX)
 	CScrollMgr::Get_Instance()->Set_ScrollX(-m_fSpeed);
+
+if (SCROLL_OFFSET_MIN_Y > m_tInfo.fY + iScrollY)
+CScrollMgr::Get_Instance()->Set_ScrollY(m_fSpeed);
+
+if (SCROLL_OFFSET_MAX_Y < m_tInfo.fY + iScrollY)
+	CScrollMgr::Get_Instance()->Set_ScrollY(-m_fSpeed);
 }

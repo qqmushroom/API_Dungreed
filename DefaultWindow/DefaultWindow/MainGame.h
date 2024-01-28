@@ -20,7 +20,5 @@ private:
 	HDC			m_DC;
 	DWORD	    m_dwTime;
 
-	list<CObj*>		m_ObjList[END];
-
 };
 
