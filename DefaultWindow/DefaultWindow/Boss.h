@@ -18,6 +18,7 @@ public:
 
 private:
 	void		Motion_Change();
+	void        Boss_Attack();
 
 	STATE			m_ePreState;
 	STATE			m_eCurState;

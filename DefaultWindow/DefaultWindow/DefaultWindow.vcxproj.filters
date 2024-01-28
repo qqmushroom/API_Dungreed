@@ -82,6 +82,15 @@
     <Filter Include="02. Managers\00. AbstractFactory">
       <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\03. Boss\00. BossLeftArm">
+      <UniqueIdentifier>{6404ef89-e011-4ff1-91e6-87838dfced97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Boss\01. BossRightArm">
+      <UniqueIdentifier>{a5b27d85-9524-4f94-b3bb-7871b572790e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Boss\02. BossBullet">
+      <UniqueIdentifier>{3b6533a2-669a-482d-b781-3104f89ac328}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -168,6 +177,15 @@
     <ClInclude Include="AbstractFactory.h">
       <Filter>02. Managers\00. AbstractFactory</Filter>
     </ClInclude>
+    <ClInclude Include="BossLeftArm.h">
+      <Filter>01. Obj\03. Boss\00. BossLeftArm</Filter>
+    </ClInclude>
+    <ClInclude Include="BossRightArm.h">
+      <Filter>01. Obj\03. Boss\01. BossRightArm</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBullet.h">
+      <Filter>01. Obj\03. Boss\02. BossBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -238,6 +256,15 @@
     </ClCompile>
     <ClCompile Include="Stage1.cpp">
       <Filter>03. Scene\02. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="BossLeftArm.cpp">
+      <Filter>01. Obj\03. Boss\00. BossLeftArm</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRightArm.cpp">
+      <Filter>01. Obj\03. Boss\01. BossRightArm</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBullet.cpp">
+      <Filter>01. Obj\03. Boss\02. BossBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

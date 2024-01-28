@@ -62,8 +62,8 @@ void CStage1::Initialize()
 	//// 플레이어 위치
 	//CObjMgr::Get_Instance()->GetBack(PLAYER)->Set_Pos(300, 400);
 
-	//// 지형
-	//CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(100, 600, 1000, 200));			// 메인 지형
+	 
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(100, 600, 1000, 200));			// 메인 지형
 }
 
 void CStage1::Update()

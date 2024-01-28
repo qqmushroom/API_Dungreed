@@ -148,6 +148,9 @@
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossBullet.h" />
+    <ClInclude Include="BossLeftArm.h" />
+    <ClInclude Include="BossRightArm.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="DefaultWindow.h" />
@@ -176,6 +179,9 @@
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossBullet.cpp" />
+    <ClCompile Include="BossLeftArm.cpp" />
+    <ClCompile Include="BossRightArm.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="DefaultWindow.cpp" />

@@ -19,7 +19,7 @@ void CBoss::Initialize()
 	m_tInfo.fCY = 248.f;
 	m_tInfo.fX = 630.f;
 	m_tInfo.fY = 350.f;
-	m_iBoss_Hp = 100;
+	m_iBoss_Hp = 150;
 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Boss/BossIdle.bmp", L"BossIdle");
 
@@ -30,11 +30,11 @@ void CBoss::Initialize()
 
 int CBoss::Update()
 {
-	/*if (m_bDead)
-		return OBJ_DEAD;*/
+	if (0 >= m_iBoss_Hp)
+		return OBJ_DEAD;
 
 
-	/*Boss_Attack();*/
+	Boss_Attack();
 
 	CObj::Update_Rect();
 
@@ -90,6 +90,10 @@ void CBoss::Motion_Change()
 		m_ePreState = m_eCurState;
 	}
 
+}
+
+void CBoss::Boss_Attack()
+{
 }
 
 //void CBoss::Boss_Attack()
