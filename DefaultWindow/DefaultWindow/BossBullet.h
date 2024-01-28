@@ -1,8 +1,14 @@
 #pragma once
-class CBossBullet
+class CBossBullet : 
 {
 public:
-	CBossBullet();
-	~CBossBullet();
-};
+	CMonsterBullet1();
+	virtual~CMonsterBullet1();
+public:
+	virtual void Initialize()		override;
+	virtual  int Update()			override;
+	virtual void LateUpdate()		override;
+	virtual void Render(HDC hDC)	override;
+	virtual void Release()			override;
 
+};

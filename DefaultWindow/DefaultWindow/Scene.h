@@ -9,10 +9,10 @@ public:
 	virtual ~CScene();
 
 public:
-	virtual void	Initialize() PURE;
-	virtual void	Update()PURE;
-	virtual void	Late_Update()PURE;
-	virtual void	Render(HDC hDC)PURE;
+	virtual void	Initialize()PURE;
+	virtual void	Update();
+	virtual void	Late_Update();
+	virtual void	Render(HDC hDC);
 	virtual void	Release()PURE;
 
 };

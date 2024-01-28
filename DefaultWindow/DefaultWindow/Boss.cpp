@@ -4,6 +4,10 @@
 #include "ScrollMgr.h"
 #include "BmpMgr.h"
 #include "Define.h"
+#include "ObjMgr.h"
+#include "CollisionMgr.h"
+#include "AbstractFactory.h"
+#include "Bullet.h"
 
 CBoss::CBoss() :
 	m_iBoss_Hp(0), m_ePreState(ST_END), m_eCurState(IDLE)
@@ -33,8 +37,13 @@ int CBoss::Update()
 	if (0 >= m_iBoss_Hp)
 		return OBJ_DEAD;
 
+	if (m_dwTime + 1200 < GetTickCount())
+	{
 
-	Boss_Attack();
+	    Boss_Attack();
+
+	    m_dwTime = GetTickCount();
+	}
 
 	CObj::Update_Rect();
 
@@ -94,6 +103,25 @@ void CBoss::Motion_Change()
 
 void CBoss::Boss_Attack()
 {
+	//CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
+	
+	/*CObj* pBullet = new CBullet;
+	pBullet->Initialize();
+	CObjMgr::Get_Instance()->Add_Object(BULLET, pBullet);
+	CObjMgr::Get_Instance()->GetBack(BULLET)->Set_Pos(m_tInfo.fX, m_tInfo.fY);*/
+
+
+	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(-1, 1));
+
+	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(0, 1));
+
+	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(1, 1));
 }
 
 //void CBoss::Boss_Attack()
@@ -119,7 +147,7 @@ void CBoss::Boss_Attack()
 //
 //				CObjMgr::GetInstance()->AddObject(BOSSBULLET, CAbstractFactory<CBossBulletMulti>::CreateObj());
 //				dynamic_cast<CBossBulletMulti*>(CObjMgr::GetInstance()->GetBack(BOSSBULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
-//				dynamic_cast<CBossBulletMulti*>(CObjMgr::GetInstance()->GetBack(BOSSBULLET))->SetDir(Vector2D(1, 1));
+//				dynamic_cast<CBossBulletMulti*>(CObjMgr::GetInstance()->GetBack(BOSSBULLET))->SetDir(tor2D(1, 1));
 //				break;
 //
 //			case FIRE_1:

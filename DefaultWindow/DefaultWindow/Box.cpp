@@ -37,9 +37,9 @@ void CBox::Late_Update()
 
 void CBox::Render(HDC hDC)
 {
-	if (!m_bActive)
-		return;
-
+	/*if (!m_bActive)
+		return;*/
+	// 2023.01.28 숨기려고 만든 변수
 	int     iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 	int     iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 

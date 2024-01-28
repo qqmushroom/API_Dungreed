@@ -24,6 +24,8 @@
 #include <algorithm>
 #include <map>
 #include <vector>
+#include "Vector2D.h"
+
 
 #ifdef _DEBUG
 
@@ -38,8 +40,5 @@
 
 #endif
 #endif
-
-
-
 
 using namespace std;

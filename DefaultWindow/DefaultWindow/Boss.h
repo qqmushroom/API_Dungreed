@@ -20,10 +20,10 @@ private:
 	void		Motion_Change();
 	void        Boss_Attack();
 
-	STATE			m_ePreState;
-	STATE			m_eCurState;
+	STATE		m_ePreState;
+	STATE		m_eCurState;
 
 protected:
 	int         m_iBoss_Hp;
-
+	DWORD		m_dwTime;
 };
