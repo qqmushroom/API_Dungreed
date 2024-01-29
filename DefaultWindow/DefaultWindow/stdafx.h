@@ -6,6 +6,7 @@
 #pragma once
 
 #include "targetver.h"
+#include <io.h>
 #include <iostream>
 
 #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용은 Windows 헤더에서 제외합니다.
@@ -26,6 +27,13 @@
 #include <vector>
 #include "Vector2D.h"
 
+#include "fmod.h"
+#include "fmod.hpp"
+#pragma comment(lib, "fmodex_vc.lib")
+
+
+#include <Vfw.h>
+#pragma comment(lib, "vfw32.lib")
 
 #ifdef _DEBUG
 

@@ -103,6 +103,13 @@ enum DIRECTION
 	DIR_END
 };
 
+enum CHANNELID
+{
+	SOUND_EFFECT,
+	SOUND_BGM,
+	MAXCHANNEL
+};
+
 struct tagFinder
 {
 public:

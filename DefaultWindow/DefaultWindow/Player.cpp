@@ -9,6 +9,9 @@
 #include "Sword.h"
 #include "Obj.h"
 #include "ScrollMgr.h"
+#include "SoundMgr.h"
+
+float	g_fVolume(0.05f);
 
 CPlayer::CPlayer()
 	:m_bJump(false), m_bUnderJump(false), m_fJumpPower(0.f), m_fTime(0.f), m_ePreState(ST_END), m_eCurState(IDLE)
@@ -25,7 +28,7 @@ void CPlayer::Initialize()
 {
 	m_tInfo = { 200.f, 450.f, 78.f, 75.f };
 	m_fSpeed = 7.f;
-	m_fJumpPower = 16.f;
+	m_fJumpPower = 15.f;
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Idle/CharIdle.bmp", L"CharIdle");
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Run/CharRun.bmp", L"CharRun");
 	
@@ -34,7 +37,7 @@ void CPlayer::Initialize()
 
 	m_tFrame = { 0, 4, 0, 200, GetTickCount() };
 
-
+	CSoundMgr::Get_Instance()->PlayBGM(L"JailBoss.wav", g_fVolume);
 }
 
 int CPlayer::Update()
@@ -83,6 +86,12 @@ void CPlayer::Release()
 
 }
 
+void CPlayer::OnHit()
+{
+	CObj::OnHit();
+	JumpEnd();
+}
+
 void CPlayer::Key_Input()
 {
 
@@ -95,8 +104,8 @@ void CPlayer::Key_Input()
 		m_pFrameKey = L"CharRun";
 		m_eCurState = RUN;
 		m_eDir = DIR_RIGHT;
-		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
-			m_tInfo.fY = fY;
+		/*if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
+			m_tInfo.fY = fY;*/
 	}
 	else if (KEY_PRESS('A'))
 	{
@@ -105,8 +114,8 @@ void CPlayer::Key_Input()
 		m_pFrameKey = L"CharRun";
 		m_eCurState = RUN2;
 		m_eDir = DIR_LEFT;
-		if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
-			m_tInfo.fY = fY;
+		/*if (!m_bJump && CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY))
+			m_tInfo.fY = fY;*/
 	}
 	else
 	{
@@ -119,74 +128,103 @@ void CPlayer::Key_Input()
 		m_bJump = true;
 	}
 
-	else if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
-	{
-		m_bUnderJump = true;
-	}
+	//else if ((KEY_PRESS('S')) && (KEY_DOWN(VK_SPACE)))
+	//{
+	//	m_bUnderJump = true;
+	//}
 
 	if (KEY_PRESS(VK_LBUTTON))
 	{
 		if (!m_vecWeapon[m_iCurWeaponIndex]->GetIsAttack())
 		{
 			m_vecWeapon[m_iCurWeaponIndex]->Attack();
+
+			CSoundMgr::Get_Instance()->PlaySound(L"Swing.wav", SOUND_EFFECT, g_fVolume);
 		}
 	}
 	
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_F1))
+	{
+		CSoundMgr::Get_Instance()->PlaySound(L"JailBoss.wav", SOUND_EFFECT, g_fVolume);
+		return;
+	}
+	else if (CKeyMgr::Get_Instance()->Key_Down(VK_F2))
+	{
+		g_fVolume -= 0.1f;
+
+
+		if (0.f > g_fVolume)
+			g_fVolume = 0.f;
+
+		CSoundMgr::Get_Instance()->SetChannelVolume(SOUND_EFFECT, g_fVolume);
+	}
+
+	else if (CKeyMgr::Get_Instance()->Key_Down(VK_F3))
+	{
+		g_fVolume += 0.1f;
+
+		if (1.f < g_fVolume)
+			g_fVolume = 1.f;
+
+		CSoundMgr::Get_Instance()->SetChannelVolume(SOUND_EFFECT, g_fVolume);
+
+	}
 }
 
 void CPlayer::Jump()
 {
 	float	fY(0.f);
 
-	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY);
 
 	if (m_bJump)
 	{
 		m_tInfo.fY -= (m_fJumpPower * m_fTime/*sin(m_fAngle)*/) - (9.8f * m_fTime * m_fTime * 0.6f);
 
 		m_fTime += 0.1f;
-
-		if (bLineCol && (fY < m_tInfo.fY))
-		{
-			m_bJump = false;
-			m_fTime = 0.f;
-			m_tInfo.fY = fY;
-		}
 	}
 
-	else if (bLineCol)
+	else 
 	{
-		m_tInfo.fY = fY;
+		m_tInfo.fY += 15.f;
 	}
 
 }
 
-void CPlayer::UnderJump()
+void CPlayer::JumpEnd()
 {
-	float	fY(0.f);
-
-	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY);
-
-	if (m_bUnderJump)
+	if (m_bJump)
 	{
-		m_tInfo.fY -= (m_fJumpPower * m_fTime/*sin(m_fAngle)*/) + (9.8f * m_fTime * m_fTime * 0.5f);
-
-		m_fTime += 0.1f;
-
-		if (bLineCol && (fY > m_tInfo.fY))
-		{
-			m_bUnderJump = false;
-			m_fTime = 0.f;
-			m_tInfo.fY = fY;
-		}
+		m_bJump = false;
+		m_fTime = 0.f;
 	}
-
-	else if (bLineCol)
-	{
-		m_tInfo.fY = fY;
-	}
-
 }
+
+//void CPlayer::UnderJump()
+//{
+//	float	fY(0.f);
+//
+//	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY);
+//
+//	if (m_bUnderJump)
+//	{
+//		m_tInfo.fY -= (m_fJumpPower * m_fTime/*sin(m_fAngle)*/) + (9.8f * m_fTime * m_fTime * 0.5f);
+//
+//		m_fTime += 0.1f;
+//
+//		if (bLineCol && (fY > m_tInfo.fY))
+//		{
+//			m_bUnderJump = false;
+//			m_fTime = 0.f;
+//			m_tInfo.fY = fY;
+//		}
+//	}
+//
+//	else if (bLineCol)
+//	{
+//		m_tInfo.fY = fY;
+//	}
+//
+//}
 
 void CPlayer::Motion_Change()
 {

@@ -12,10 +12,11 @@ public:
 
 public:
 	virtual void Initialize() override;
-	virtual int Update() override;
+	virtual  int Update() override;
 	virtual void Late_Update() override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
+	virtual void OnHit() override;
 
 public:
 	virtual void AddWeapon(CWeapon* pWeapon) 
@@ -26,7 +27,8 @@ public:
 private:
 	void		Key_Input();
 	void		Jump();
-	void        UnderJump();
+	void        JumpEnd();
+	/*void        UnderJump();*/
 	void		Motion_Change();
 	void		Offset();
 

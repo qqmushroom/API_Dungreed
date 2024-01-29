@@ -6,6 +6,7 @@
 #include "ScrollMgr.h"
 #include "SceneMgr.h"
 #include "ObjMgr.h"
+#include "SoundMgr.h"
 
 CMainGame::CMainGame()
 	: m_dwTime(GetTickCount()) // 2024.01.25 bskim: 겟틱카운트는 현재시간을 의미
@@ -26,7 +27,7 @@ void CMainGame::Initialize()
 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/back.bmp", L"back");
 	CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_MENU);
-
+	CSoundMgr::Get_Instance()->Initialize();
 	
 }
 
@@ -66,6 +67,7 @@ void CMainGame::Release()
 	CLineMgr::Destroy_Instance();
 	CSceneMgr::Destroy_Instance();
 	CObjMgr::Destroy_Instance();
+	CSoundMgr::Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 }

@@ -91,6 +91,9 @@
     <Filter Include="01. Obj\06. Bullet">
       <UniqueIdentifier>{bfce6a05-fabe-4cb6-a25f-4ff9359fe392}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Managers\08. SoundMgr">
+      <UniqueIdentifier>{d7846805-f035-423c-9e87-40bb599a23c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -189,6 +192,9 @@
     <ClInclude Include="Bullet.h">
       <Filter>01. Obj\06. Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>02. Managers\08. SoundMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -268,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>01. Obj\06. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>02. Managers\08. SoundMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

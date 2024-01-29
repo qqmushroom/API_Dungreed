@@ -25,5 +25,9 @@ private:
 
 protected:
 	int         m_iBoss_Hp;
+	int         m_iAngle;
+	int         m_iAddAngle;
+	int         m_iBulletCount;
+
 	DWORD		m_dwTime;
 };

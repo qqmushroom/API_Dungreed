@@ -33,6 +33,8 @@ public:
 	virtual void Render(HDC hDC)	PURE;
 	virtual void Release()			PURE;
 
+	virtual void OnHit() {}
+
 protected:
 	void		Update_Rect();
 	void		Move_Frame();

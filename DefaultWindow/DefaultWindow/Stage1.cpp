@@ -12,6 +12,8 @@
 #include "LineMgr.h"
 #include "Box.h"
 #include "Mouse.h"
+#include "SoundMgr.h"
+#include "Obj.h"
 
 
 CStage1::CStage1()
@@ -25,8 +27,9 @@ CStage1::~CStage1()
 
 void CStage1::Initialize()
 {
-	CLineMgr::Get_Instance()->Initialize();
+	//CLineMgr::Get_Instance()->Initialize();
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/dungeon_boss.bmp", L"dungeon_boss");
+	//CSoundMgr::Get_Instance()->PlayBGM(L"Success.wav", g_fVolume);
 
 	// CObjMgr::Get_Instance()->Add_Object(PLAYER, CAbstractFactory<CPlayer>::Create());
 	// 2024.01.22 bskim: 마우스 호출하는데 있어 추상팩토리 이해하지 못해 사용x, Obj리스트 PLAYER에 데이터 비어있었음.
@@ -62,16 +65,16 @@ void CStage1::Initialize()
 	//CObjMgr::Get_Instance()->GetBack(PLAYER)->Set_Pos(300, 400);
 
 
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(640, 660, 1280, 120));  //메인 지형
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(640, 645, 1280, 110));  //메인 지형
 	
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(636, 500, 470, 20));    //중앙 지형
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(636, 190, 250, 40));
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(636, 485, 435, 15));    //중앙 지형
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(636, 175, 235, 35));
 
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(270, 390, 160, 20));    //왼쪽 지형
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(265, 260, 145, 20));
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(270, 375, 150, 17));    //왼쪽 지형
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(265, 245, 120, 17));
 
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(1000, 390, 160, 20));   //오른쪽 지형
-	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(1005, 260, 145, 20));
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(1000, 375, 150, 17));   //오른쪽 지형
+	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(1005, 245, 120, 17));
 
 	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(640, 30, 1020, 60));    //천장
 

@@ -79,6 +79,11 @@ void CCollisionMgr::Collision_RectEx(list<CObj*> Dst, list<CObj*> Src)
 					{
 						Dest->Set_PosY(fY);
 					}
+
+					if (fY > 0)
+					{
+						Dest->OnHit();
+					}
 				}
 
 				// ÁÂ¿ì Ãæµ¹

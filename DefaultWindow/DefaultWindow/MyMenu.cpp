@@ -6,7 +6,7 @@
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "SceneMgr.h"
-
+#include "SoundMgr.h"
 CMyMenu::CMyMenu()
 {
 }
@@ -31,6 +31,7 @@ void CMyMenu::Initialize()
 	pButton = CAbstractFactory<CMyButton>::Create(600.f, 400.f);
 	pButton->Set_FrameKey(L"Exit");
 	CObjMgr::Get_Instance()->Add_Object(BUTTON, pButton);*/
+
 }
 
 void CMyMenu::Update()

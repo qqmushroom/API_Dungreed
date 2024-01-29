@@ -5,6 +5,8 @@
 class CBullet : public CObj
 {
 public:
+	enum	STATE { IDLE, ST_END };
+public:
 	CBullet();
 	virtual~CBullet();
 public:
@@ -16,6 +18,11 @@ public:
 
 	void SetDir(Vector2D vecDir) { m_vecDir = vecDir; }
 
+private:
+	void Motion_Change();
+
+	STATE		m_ePreState;
+	STATE		m_eCurState;
 protected:
 	Vector2D m_vecDir = Vector2D(0, 0);;
 	float m_fSpeed = 0.f;

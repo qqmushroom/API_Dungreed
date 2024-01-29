@@ -10,7 +10,7 @@
 #include "Bullet.h"
 
 CBoss::CBoss() :
-	m_iBoss_Hp(0), m_ePreState(ST_END), m_eCurState(IDLE)
+	m_iBoss_Hp(0), m_ePreState(ST_END), m_eCurState(IDLE), m_iAngle(0), m_iAddAngle(0), m_iBulletCount(0)
 {
 }
 CBoss::~CBoss()
@@ -21,9 +21,12 @@ void CBoss::Initialize()
 {
 	m_tInfo.fCX = 175.f;
 	m_tInfo.fCY = 248.f;
-	m_tInfo.fX = 630.f;
-	m_tInfo.fY = 350.f;
+	m_tInfo.fX = 625.f;
+	m_tInfo.fY = 345.f;
 	m_iBoss_Hp = 150;
+	m_iAngle = 0;
+	m_iAddAngle = 10;
+	m_iBulletCount = 4;
 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Boss/BossIdle.bmp", L"BossIdle");
 
@@ -37,7 +40,7 @@ int CBoss::Update()
 	if (0 >= m_iBoss_Hp)
 		return OBJ_DEAD;
 
-	if (m_dwTime + 1200 < GetTickCount())
+	if (m_dwTime + 250 < GetTickCount())
 	{
 
 	    Boss_Attack();
@@ -111,17 +114,23 @@ void CBoss::Boss_Attack()
 	CObjMgr::Get_Instance()->GetBack(BULLET)->Set_Pos(m_tInfo.fX, m_tInfo.fY);*/
 
 
-	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(-1, 1));
+	/*CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX + 15, Get_Info().fY + 30);
+	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(-1, 1));*/
 
-	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(0, 1));
+	for (int i = 0; i < m_iBulletCount; ++i)
+	{
+		CBullet* pBullet = new CBullet;
+		pBullet->Initialize();
+		CObjMgr::Get_Instance()->Add_Object(BULLET, pBullet);
 
-	CObjMgr::Get_Instance()->Add_Object(BULLET, CAbstractFactory<CBullet>::Create());
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->Set_Pos(Get_Info().fX, Get_Info().fY);
-	dynamic_cast<CBullet*>(CObjMgr::Get_Instance()->GetBack(BULLET))->SetDir(Vector2D(1, 1));
+		pBullet->Set_Pos(Get_Info().fX + 15.0, Get_Info().fY + 30.0);
+
+		int iAngle = m_iAngle + (360 / m_iBulletCount) * i;
+		pBullet->SetDir(Vector2D(cos(iAngle * PI / 180.f), sin(iAngle * PI / 180.f)));
+	}
+
+	m_iAngle = (m_iAngle + m_iAddAngle) % 360;
 }
 
 //void CBoss::Boss_Attack()
