@@ -1,0 +1,8 @@
+
+*.vsidx
+*.db
+*.ipch
+*.json
+*.suo
+DefaultWindow/DefaultWindow/x64
+DefaultWindow/x64/Debug
