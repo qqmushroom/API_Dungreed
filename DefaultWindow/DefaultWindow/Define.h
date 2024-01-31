@@ -86,6 +86,7 @@ enum	OBJID
 	BULLET,
 	PLAYER,
 	WEAPON,
+	UI,
 	MOUSE,
 	END
 };

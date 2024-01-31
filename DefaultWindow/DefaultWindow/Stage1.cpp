@@ -16,7 +16,8 @@
 #include "Obj.h"
 #include "BossLeftHand.h"
 #include "BossRightHand.h"
-
+#include "Sprite.h"
+#include "ProgressBar.h"
 
 CStage1::CStage1()
 {
@@ -88,6 +89,27 @@ void CStage1::Initialize()
 	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(1005, 245, 120, 17));
 
 	CObjMgr::Get_Instance()->Add_Object(FLOOR, new CBox(640, 30, 1020, 60));    //ÃµÀå
+
+	CSprite* pHpBarBack = new CSprite;
+	if (pHpBarBack != nullptr)
+	{
+		pHpBarBack->SetImagePath(L"../Image/UI/PlayerLifeBack.bmp", L"PlayerLifeBack");
+		pHpBarBack->SetInfo(160, 40, 300, 65);
+
+		CObjMgr::Get_Instance()->Add_Object(UI, pHpBarBack);
+	}
+
+	CProgressBar* pHpBar = new CProgressBar;
+	if (pHpBar != nullptr)
+	{
+		pHpBar->SetImagePath(L"../Image/UI/PlayerLifeBack2.bmp", L"PlayerLifeBack2");
+		pHpBar->SetInfo(160, 40, 300, 65);
+
+		pHpBar->SetTarget(pPlayer);
+
+		CObjMgr::Get_Instance()->Add_Object(UI, pHpBar);
+	}
+
 
 }
 

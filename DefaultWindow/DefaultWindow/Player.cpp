@@ -25,6 +25,7 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize()
 {
 	m_tInfo = { 200.f, 450.f, 78.f, 75.f };
+	m_iMaxHp = 10;
 	m_iHp = 10;
 	m_fSpeed = 7.f;
 	m_fJumpPower = 15.f; 

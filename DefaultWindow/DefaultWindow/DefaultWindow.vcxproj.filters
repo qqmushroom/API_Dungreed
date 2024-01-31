@@ -94,6 +94,15 @@
     <Filter Include="01. Obj\08. BossRighttHand">
       <UniqueIdentifier>{70d9f290-2080-42f7-9096-18e43c47c92e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\09.UI">
+      <UniqueIdentifier>{de3bddec-e389-42ff-b5d5-f7e93cebe120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\09.UI\00. Sprite">
+      <UniqueIdentifier>{a4b29fb3-2072-479f-8c0a-f98320a8659e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\09.UI\00. Sprite\00. ProgressBar">
+      <UniqueIdentifier>{b9cca133-489d-4e1c-9d51-09ab886c5048}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -195,6 +204,12 @@
     <ClInclude Include="BossRightHand.h">
       <Filter>01. Obj\08. BossRighttHand</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>01. Obj\09.UI\00. Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>01. Obj\09.UI\00. Sprite\00. ProgressBar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -277,6 +292,12 @@
     </ClCompile>
     <ClCompile Include="BossRightHand.cpp">
       <Filter>01. Obj\08. BossRighttHand</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>01. Obj\09.UI\00. Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>01. Obj\09.UI\00. Sprite\00. ProgressBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
