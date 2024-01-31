@@ -11,8 +11,6 @@
 #include "ScrollMgr.h"
 #include "SoundMgr.h"
 
-float	g_fVolume(0.05f);
-
 CPlayer::CPlayer()
 	:m_bJump(false), m_bUnderJump(false), m_fJumpPower(0.f), m_fTime(0.f), m_ePreState(ST_END), m_eCurState(IDLE)
 {
@@ -27,8 +25,9 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize()
 {
 	m_tInfo = { 200.f, 450.f, 78.f, 75.f };
+	m_iHp = 10;
 	m_fSpeed = 7.f;
-	m_fJumpPower = 15.f;
+	m_fJumpPower = 15.f; 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Idle/CharIdle.bmp", L"CharIdle");
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Run/CharRun.bmp", L"CharRun");
 	
@@ -36,8 +35,8 @@ void CPlayer::Initialize()
 	m_pFrameKey = L"CharIdle";
 
 	m_tFrame = { 0, 4, 0, 200, GetTickCount() };
-
-	CSoundMgr::Get_Instance()->PlayBGM(L"JailBoss.wav", g_fVolume);
+	/*g_fVolume = 0.03f;
+	CSoundMgr::Get_Instance()->PlayBGM(L"JailBoss.wav", g_fVolume);*/
 }
 
 int CPlayer::Update()
@@ -139,13 +138,14 @@ void CPlayer::Key_Input()
 		{
 			m_vecWeapon[m_iCurWeaponIndex]->Attack();
 
-			CSoundMgr::Get_Instance()->PlaySound(L"Swing.wav", SOUND_EFFECT, g_fVolume);
+			/*CSoundMgr::Get_Instance()->PlaySound(L"Swing.wav", SOUND_EFFECT, g_fVolume);
+			void StopSound(SOUND_EFFECT);*/
 		}
 	}
 	
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F1))
 	{
-		CSoundMgr::Get_Instance()->PlaySound(L"JailBoss.wav", SOUND_EFFECT, g_fVolume);
+		//CSoundMgr::Get_Instance()->PlaySound(L"JailBoss.wav", SOUND_EFFECT, g_fVolume);
 		return;
 	}
 	else if (CKeyMgr::Get_Instance()->Key_Down(VK_F2))

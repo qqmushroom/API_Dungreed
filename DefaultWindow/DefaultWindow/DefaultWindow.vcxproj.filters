@@ -82,17 +82,17 @@
     <Filter Include="02. Managers\00. AbstractFactory">
       <UniqueIdentifier>{740ed8e4-2fba-41b3-9f2f-41c4119cd702}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\03. Boss\00. BossLeftArm">
-      <UniqueIdentifier>{6404ef89-e011-4ff1-91e6-87838dfced97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\03. Boss\01. BossRightArm">
-      <UniqueIdentifier>{a5b27d85-9524-4f94-b3bb-7871b572790e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Obj\06. Bullet">
       <UniqueIdentifier>{bfce6a05-fabe-4cb6-a25f-4ff9359fe392}</UniqueIdentifier>
     </Filter>
     <Filter Include="02. Managers\08. SoundMgr">
       <UniqueIdentifier>{d7846805-f035-423c-9e87-40bb599a23c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\07. BossLeftHand">
+      <UniqueIdentifier>{b832b382-7a73-4071-9cc2-6ec972188044}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\08. BossRighttHand">
+      <UniqueIdentifier>{70d9f290-2080-42f7-9096-18e43c47c92e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +180,6 @@
     <ClInclude Include="AbstractFactory.h">
       <Filter>02. Managers\00. AbstractFactory</Filter>
     </ClInclude>
-    <ClInclude Include="BossLeftArm.h">
-      <Filter>01. Obj\03. Boss\00. BossLeftArm</Filter>
-    </ClInclude>
-    <ClInclude Include="BossRightArm.h">
-      <Filter>01. Obj\03. Boss\01. BossRightArm</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -194,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="SoundMgr.h">
       <Filter>02. Managers\08. SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="BossLeftHand.h">
+      <Filter>01. Obj\07. BossLeftHand</Filter>
+    </ClInclude>
+    <ClInclude Include="BossRightHand.h">
+      <Filter>01. Obj\08. BossRighttHand</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,17 +266,17 @@
     <ClCompile Include="Stage1.cpp">
       <Filter>03. Scene\02. Stage</Filter>
     </ClCompile>
-    <ClCompile Include="BossLeftArm.cpp">
-      <Filter>01. Obj\03. Boss\00. BossLeftArm</Filter>
-    </ClCompile>
-    <ClCompile Include="BossRightArm.cpp">
-      <Filter>01. Obj\03. Boss\01. BossRightArm</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>01. Obj\06. Bullet</Filter>
     </ClCompile>
     <ClCompile Include="SoundMgr.cpp">
       <Filter>02. Managers\08. SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BossLeftHand.cpp">
+      <Filter>01. Obj\07. BossLeftHand</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRightHand.cpp">
+      <Filter>01. Obj\08. BossRighttHand</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

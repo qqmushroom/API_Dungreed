@@ -13,6 +13,6 @@ public:
 	virtual void	Update();
 	virtual void	Late_Update();
 	virtual void	Render(HDC hDC);
-	virtual void	Release()PURE;
+	virtual void	Release();
 
 };

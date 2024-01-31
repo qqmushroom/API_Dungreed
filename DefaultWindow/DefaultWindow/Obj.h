@@ -34,6 +34,7 @@ public:
 	virtual void Release()			PURE;
 
 	virtual void OnHit() {}
+	virtual void Damaged(int _iValue);
 
 protected:
 	void		Update_Rect();
@@ -54,5 +55,7 @@ protected:
 
 	CObj*		m_pTarget;
 	TCHAR*		m_pFrameKey;
+
+	int			m_iHp;
 };
 

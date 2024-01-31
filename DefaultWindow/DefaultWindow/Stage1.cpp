@@ -14,6 +14,8 @@
 #include "Mouse.h"
 #include "SoundMgr.h"
 #include "Obj.h"
+#include "BossLeftHand.h"
+#include "BossRightHand.h"
 
 
 CStage1::CStage1()
@@ -29,10 +31,20 @@ void CStage1::Initialize()
 {
 	//CLineMgr::Get_Instance()->Initialize();
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Map/dungeon_boss.bmp", L"dungeon_boss");
-	//CSoundMgr::Get_Instance()->PlayBGM(L"Success.wav", g_fVolume);
+	CSoundMgr::Get_Instance()->Initialize();
+	g_fVolume = 0.03f;
+	CSoundMgr::Get_Instance()->PlayBGM(L"JailBoss.wav", g_fVolume);
 
 	// CObjMgr::Get_Instance()->Add_Object(PLAYER, CAbstractFactory<CPlayer>::Create());
 	// 2024.01.22 bskim: 마우스 호출하는데 있어 추상팩토리 이해하지 못해 사용x, Obj리스트 PLAYER에 데이터 비어있었음.
+
+	CObj* pBossLeftHand = new CBossLeftHand;
+	pBossLeftHand->Initialize();
+	CObjMgr::Get_Instance()->Add_Object(BOSSLEFTHAND, pBossLeftHand);
+
+	CObj* pBossRightHand = new CBossRightHand;
+	pBossRightHand->Initialize();
+	CObjMgr::Get_Instance()->Add_Object(BOSSRIGHTHAND, pBossRightHand);
 
 	CObj* pPlayer = new CPlayer;
 	pPlayer->Initialize();
@@ -42,7 +54,6 @@ void CStage1::Initialize()
 	CObj* pBoss = new CBoss;
 	pBoss->Initialize();
 	CObjMgr::Get_Instance()->Add_Object(BOSS, pBoss);
-
 
 	CObj* pMouse = new CMouse;
 	pMouse->Initialize();
@@ -132,12 +143,12 @@ void CStage1::Render(HDC hDC)
 	//2024.01.25 bskim: 배경 먼저 플레이어 나중에 그래야 플레이어 보임
 	//2024.01.25 bskim: 배경 깜빡거리는거 방지하기하기위해 더블 버퍼링
 
-	CLineMgr::Get_Instance()->Render(hDC);
+	//CLineMgr::Get_Instance()->Render(hDC);
 	CScene::Render(hDC);
 	/*CObjMgr::Get_Instance()->Render(hDC);*/
 }
 
 void CStage1::Release()
 {
-	
+	CSoundMgr::Destroy_Instance();
 }

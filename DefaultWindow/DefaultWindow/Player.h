@@ -39,6 +39,7 @@ private:
 	bool            m_bUnderJump;   // 밑 점프
 	float			m_fJumpPower;	// 힘의 크기
 	float			m_fTime;		// 점프 중 진행 시간 
+	float	        g_fVolume = 0.f;
 
 	STATE			m_ePreState;
 	STATE			m_eCurState;

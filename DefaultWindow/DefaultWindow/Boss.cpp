@@ -10,7 +10,7 @@
 #include "Bullet.h"
 
 CBoss::CBoss() :
-	m_iBoss_Hp(0), m_ePreState(ST_END), m_eCurState(IDLE), m_iAngle(0), m_iAddAngle(0), m_iBulletCount(0)
+	 m_ePreState(ST_END), m_eCurState(IDLE), m_iAngle(0), m_iAddAngle(0), m_iBulletCount(0)
 {
 }
 CBoss::~CBoss()
@@ -23,9 +23,9 @@ void CBoss::Initialize()
 	m_tInfo.fCY = 248.f;
 	m_tInfo.fX = 625.f;
 	m_tInfo.fY = 345.f;
-	m_iBoss_Hp = 150;
+	m_iHp = 150;
 	m_iAngle = 0;
-	m_iAddAngle = 10;
+	m_iAddAngle = 20;
 	m_iBulletCount = 4;
 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Boss/BossIdle.bmp", L"BossIdle");
@@ -37,10 +37,10 @@ void CBoss::Initialize()
 
 int CBoss::Update()
 {
-	if (0 >= m_iBoss_Hp)
+	if (0 >= m_iHp)
 		return OBJ_DEAD;
 
-	if (m_dwTime + 250 < GetTickCount())
+	if (m_dwTime + 200 < GetTickCount())
 	{
 
 	    Boss_Attack();

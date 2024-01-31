@@ -1,13 +1,13 @@
 #pragma once
 #include "Obj.h"
 
-class CBoss : public CObj
+class CBossRightHand : public CObj
 {
 public:
 	enum	STATE { IDLE, ST_END };
 public:
-	CBoss();
-	virtual~CBoss();
+	CBossRightHand();
+	virtual~CBossRightHand();
 
 public:
 	virtual void Initialize()     override;
@@ -18,15 +18,13 @@ public:
 
 private:
 	void		Motion_Change();
-	void        Boss_Attack();
+	void        BossRightHand_Attack();
 
 	STATE		m_ePreState;
 	STATE		m_eCurState;
 
 protected:
 	int         m_iAngle;
-	int         m_iAddAngle;
-	int         m_iBulletCount;
 
 	DWORD		m_dwTime;
 };

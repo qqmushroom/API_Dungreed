@@ -2,7 +2,7 @@
 #include "Obj.h"
 
 
-CObj::CObj() : m_fSpeed(0.f), m_pFrameKey(nullptr), m_bDead(false), m_fAngle(0.f), m_fDistance(0.f), m_pTarget(nullptr)
+CObj::CObj() : m_fSpeed(0.f), m_pFrameKey(nullptr), m_bDead(false), m_fAngle(0.f), m_fDistance(0.f), m_pTarget(nullptr), m_iHp(0)
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
 	ZeroMemory(&m_tRect, sizeof(RECT));
@@ -33,4 +33,12 @@ void CObj::Move_Frame()
 		m_tFrame.dwTime = GetTickCount();
 	}
 
+}
+
+void CObj::Damaged(int _iValue)
+{
+	m_iHp -= _iValue;
+
+	if (0 >= m_iHp)
+		m_bDead = true;
 }

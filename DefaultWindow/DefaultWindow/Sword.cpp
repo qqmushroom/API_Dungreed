@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Sword.h"
 #include "BmpMgr.h"
-
+#include "SoundMgr.h"
 CSword::CSword()
 {
 }
@@ -83,4 +83,10 @@ void CSword::Attack()
 
 	m_dwAttackStartTime = GetTickCount();
 	m_bIsAttack = true;
+
+	float	g_fVolume(0.05f);
+
+	CSoundMgr::Get_Instance()->StopSound(SOUND_EFFECT);
+	CSoundMgr::Get_Instance()->PlaySound(L"Swing.wav", SOUND_EFFECT, g_fVolume);
+
 }

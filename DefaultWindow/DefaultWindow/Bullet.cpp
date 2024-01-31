@@ -20,7 +20,7 @@ void CBullet::Initialize()
 	m_tInfo.fCX = 50.f;
 	m_tInfo.fCY = 50.f;
 
-	m_fSpeed = 4.f;
+	m_fSpeed = 5.f;
 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Boss/BossBullet.bmp", L"BossBullet");
 

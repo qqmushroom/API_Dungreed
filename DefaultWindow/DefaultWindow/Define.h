@@ -78,13 +78,15 @@ typedef struct tagLine
 
 enum	OBJID
 {
-	PLAYER,
-	MOUSE,
-	WEAPON,
-	BOSS,
 	BUTTON,
 	FLOOR,
+	BOSSLEFTHAND,
+	BOSSRIGHTHAND,
+	BOSS,
 	BULLET,
+	PLAYER,
+	WEAPON,
+	MOUSE,
 	END
 };
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CollisionMgr.h"
 
+CCollisionMgr* CCollisionMgr::m_pInstance = nullptr;
 
 CCollisionMgr::CCollisionMgr()
 {
@@ -50,7 +51,7 @@ bool CCollisionMgr::Check_Sphere(CObj * pDst, CObj * pSrc)
 
 	float	fDiagonal = sqrt(fWidth * fWidth + fHeight * fHeight);
 
-	float	fRadius = (pDst->Get_Info().fCX + pSrc->Get_Info().fCX) * 0.5f;
+	float	fRadius = (pDst->Get_Info().fCX - 25 + pSrc->Get_Info().fCX - 25) * 0.5f;
 
 	return	fRadius >= fDiagonal;
 }
@@ -120,6 +121,25 @@ bool CCollisionMgr::Check_Rect(CObj * pDst, CObj * pSrc, float* pX, float *pY)
 		*pY = fRadiusY - fHeight;
 
 		return true;
+	}
+
+	return false;
+}
+
+bool CCollisionMgr::Collision_Spheres(list<CObj*> _Dest, list<CObj*> _Sour, CObj*& _ColDst, CObj*& _ColSrc)
+{
+	for (auto& Dst : _Dest)
+	{
+		for (auto& Src : _Sour)
+		{
+			if (Check_Sphere(Dst, Src))
+			{
+				_ColDst = Dst;
+				_ColSrc = Src;
+
+				return true;
+			}
+		}
 	}
 
 	return false;
