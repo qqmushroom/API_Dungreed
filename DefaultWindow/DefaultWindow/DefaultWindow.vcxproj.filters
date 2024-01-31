@@ -94,14 +94,26 @@
     <Filter Include="01. Obj\08. BossRighttHand">
       <UniqueIdentifier>{70d9f290-2080-42f7-9096-18e43c47c92e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\09.UI">
+    <Filter Include="01. Obj\09. UI">
       <UniqueIdentifier>{de3bddec-e389-42ff-b5d5-f7e93cebe120}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\09.UI\00. Sprite">
+    <Filter Include="01. Obj\09. UI\00. Sprite">
       <UniqueIdentifier>{a4b29fb3-2072-479f-8c0a-f98320a8659e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\09.UI\00. Sprite\00. ProgressBar">
+    <Filter Include="01. Obj\09. UI\00. Sprite\00. ProgressBar">
       <UniqueIdentifier>{b9cca133-489d-4e1c-9d51-09ab886c5048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\09. UI\BossSprite">
+      <UniqueIdentifier>{d468c09c-94ac-488a-8906-705c7f890a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\09. UI\BossSprite\00. BossProgressBar">
+      <UniqueIdentifier>{14fdc430-0211-4fe2-8617-6993e9e4270c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\10. BossLeftLaser">
+      <UniqueIdentifier>{eafabae3-56dc-4d08-a5d0-109a64962a31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\11. BossRightLaser">
+      <UniqueIdentifier>{3ac3e1e0-6699-4053-b125-67ddb35468da}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -205,10 +217,22 @@
       <Filter>01. Obj\08. BossRighttHand</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>01. Obj\09.UI\00. Sprite</Filter>
+      <Filter>01. Obj\09. UI\00. Sprite</Filter>
     </ClInclude>
     <ClInclude Include="ProgressBar.h">
-      <Filter>01. Obj\09.UI\00. Sprite\00. ProgressBar</Filter>
+      <Filter>01. Obj\09. UI\00. Sprite\00. ProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="BossSprite.h">
+      <Filter>01. Obj\09. UI\BossSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="BossProgressBar.h">
+      <Filter>01. Obj\09. UI\BossSprite\00. BossProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="BossLeftLaser.h">
+      <Filter>01. Obj\10. BossLeftLaser</Filter>
+    </ClInclude>
+    <ClInclude Include="BossRightLaser.h">
+      <Filter>01. Obj\11. BossRightLaser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,10 +318,22 @@
       <Filter>01. Obj\08. BossRighttHand</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>01. Obj\09.UI\00. Sprite</Filter>
+      <Filter>01. Obj\09. UI\00. Sprite</Filter>
     </ClCompile>
     <ClCompile Include="ProgressBar.cpp">
-      <Filter>01. Obj\09.UI\00. Sprite\00. ProgressBar</Filter>
+      <Filter>01. Obj\09. UI\00. Sprite\00. ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="BossSprite.cpp">
+      <Filter>01. Obj\09. UI\BossSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="BossProgressBar.cpp">
+      <Filter>01. Obj\09. UI\BossSprite\00. BossProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="BossLeftLaser.cpp">
+      <Filter>01. Obj\10. BossLeftLaser</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRightLaser.cpp">
+      <Filter>01. Obj\11. BossRightLaser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,13 @@ void CBossRightHand::Initialize()
 	m_pFrameKey = L"BossRightHandIdle";
 
 	m_tFrame = { 0, 9, 0, 600, GetTickCount() };
+
+	m_vecMovePosition.emplace_back(Vector2D(1030, 515));
+	m_vecMovePosition.emplace_back(Vector2D(1030, 355));
+	m_vecMovePosition.emplace_back(Vector2D(1030, 195));
+
+	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
+	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
 }
 
 int CBossRightHand::Update()
@@ -38,7 +45,7 @@ int CBossRightHand::Update()
 	/*if (m_bDead)
 		return OBJ_DEAD;*/
 
-	if (m_dwTime + 1000 < GetTickCount())
+	if (m_dwTime + 4000 <= GetTickCount())
 	{
 
 		BossRightHand_Attack();
@@ -112,4 +119,22 @@ void CBossRightHand::BossRightHand_Attack()
 
 	int iAngle = m_iAngle + (360 / m_iBulletCount);
 	pBullet->SetDir(Vector2D(cos(iAngle * PI / 180.f), sin(iAngle * PI / 180.f)));*/
+
+	vector<int> vecRand;
+	for (int i = 0; i < m_vecMovePosition.size(); ++i)
+	{
+		if (i == m_iCurrentPositionIndex)
+		{
+			continue;
+		}
+		vecRand.emplace_back(i);
+	}
+
+	int iRand = rand() % vecRand.size();
+
+	m_iCurrentPositionIndex = vecRand[iRand];
+
+	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
+	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
+
 }

@@ -23,7 +23,8 @@ void CBoss::Initialize()
 	m_tInfo.fCY = 248.f;
 	m_tInfo.fX = 625.f;
 	m_tInfo.fY = 345.f;
-	m_iHp = 150;
+	m_iHp = 300;
+	m_iMaxHp = 300;
 	m_iAngle = 0;
 	m_iAddAngle = 20;
 	m_iBulletCount = 4;
@@ -40,7 +41,7 @@ int CBoss::Update()
 	if (0 >= m_iHp)
 		return OBJ_DEAD;
 
-	if (m_dwTime + 200 < GetTickCount())
+	if (m_dwTime + 200 <= GetTickCount())
 	{
 
 	    Boss_Attack();

@@ -149,7 +149,11 @@
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossLeftHand.h" />
+    <ClInclude Include="BossLeftLaser.h" />
+    <ClInclude Include="BossProgressBar.h" />
     <ClInclude Include="BossRightHand.h" />
+    <ClInclude Include="BossRightLaser.h" />
+    <ClInclude Include="BossSprite.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CollisionMgr.h" />
@@ -184,7 +188,11 @@
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossLeftHand.cpp" />
+    <ClCompile Include="BossLeftLaser.cpp" />
+    <ClCompile Include="BossProgressBar.cpp" />
     <ClCompile Include="BossRightHand.cpp" />
+    <ClCompile Include="BossRightLaser.cpp" />
+    <ClCompile Include="BossSprite.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />

@@ -27,4 +27,7 @@ protected:
 	int         m_iAngle;
 
 	DWORD		m_dwTime;
+
+	vector<Vector2D> m_vecMovePosition;
+	int m_iCurrentPositionIndex = 0;
 };

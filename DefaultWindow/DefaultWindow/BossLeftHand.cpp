@@ -31,6 +31,13 @@ void CBossLeftHand::Initialize()
 	m_pFrameKey = L"BossLeftHandIdle";
 
 	m_tFrame = { 0, 9, 0, 600, GetTickCount() };
+
+	m_vecMovePosition.emplace_back(Vector2D(250, 515));
+	m_vecMovePosition.emplace_back(Vector2D(250, 355));
+	m_vecMovePosition.emplace_back(Vector2D(250, 195));
+
+	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
+	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
 }
 
 int CBossLeftHand::Update()
@@ -38,7 +45,8 @@ int CBossLeftHand::Update()
 	/*if (m_bDead)
 		return OBJ_DEAD;*/
 
-	if (m_dwTime + 1000 < GetTickCount())
+	// 2024.01.31 bskim: < 옆에 = 붙여서 딱 시간 맞았을때도 작동되게
+	if (m_dwTime + 4000 <= GetTickCount())
 	{
 
 		BossLeftHand_Attack();
@@ -112,4 +120,22 @@ void CBossLeftHand::BossLeftHand_Attack()
 
 		int iAngle = m_iAngle + (360 / m_iBulletCount);
 		pBullet->SetDir(Vector2D(cos(iAngle * PI / 180.f), sin(iAngle * PI / 180.f)));*/
+
+	vector<int> vecRand;
+	for (int i = 0; i < m_vecMovePosition.size(); ++i)
+	{
+		if (i == m_iCurrentPositionIndex)
+		{
+			continue;
+		}
+		vecRand.emplace_back(i);
+	}
+
+	int iRand = rand() % vecRand.size();
+
+	m_iCurrentPositionIndex = vecRand[iRand];
+
+	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
+	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
+
 }
