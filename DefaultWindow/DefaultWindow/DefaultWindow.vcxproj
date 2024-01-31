@@ -149,10 +149,14 @@
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossLeftHand.h" />
-    <ClInclude Include="BossLeftLaser.h" />
+    <ClInclude Include="BossLeftLaser.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="BossProgressBar.h" />
     <ClInclude Include="BossRightHand.h" />
-    <ClInclude Include="BossRightLaser.h" />
+    <ClInclude Include="BossRightLaser.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="BossSprite.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Bullet.h" />
@@ -188,10 +192,14 @@
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossLeftHand.cpp" />
-    <ClCompile Include="BossLeftLaser.cpp" />
+    <ClCompile Include="BossLeftLaser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="BossProgressBar.cpp" />
     <ClCompile Include="BossRightHand.cpp" />
-    <ClCompile Include="BossRightLaser.cpp" />
+    <ClCompile Include="BossRightLaser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="BossSprite.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Bullet.cpp" />
