@@ -9,6 +9,7 @@
 #include "AbstractFactory.h"
 #include "Bullet.h"
 #include "BossLeftHand.h"
+#include "BossLeftLaser.h"
 
 CBossLeftHand::CBossLeftHand() :
 	m_ePreState(ST_END), m_eCurState(IDLE), m_iAngle(0)
@@ -32,9 +33,9 @@ void CBossLeftHand::Initialize()
 
 	m_tFrame = { 0, 9, 0, 600, GetTickCount() };
 
-	m_vecMovePosition.emplace_back(Vector2D(250, 515));
+	m_vecMovePosition.emplace_back(Vector2D(250, 535));
 	m_vecMovePosition.emplace_back(Vector2D(250, 355));
-	m_vecMovePosition.emplace_back(Vector2D(250, 195));
+	m_vecMovePosition.emplace_back(Vector2D(250, 175));
 
 	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
 	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
@@ -112,14 +113,14 @@ void CBossLeftHand::Motion_Change()
 
 void CBossLeftHand::BossLeftHand_Attack()
 {
-     	/*CBullet* pBullet = new CBullet;
-	 	pBullet->Initialize();
-		CObjMgr::Get_Instance()->Add_Object(BULLET, pBullet);
+	/*CBullet* pBullet = new CBullet;
+	pBullet->Initialize();
+	CObjMgr::Get_Instance()->Add_Object(BULLET, pBullet);
 
-		pBullet->Set_Pos(Get_Info().fX + 15.0, Get_Info().fY + 30.0);
+	pBullet->Set_Pos(Get_Info().fX + 15.0, Get_Info().fY + 30.0);
 
-		int iAngle = m_iAngle + (360 / m_iBulletCount);
-		pBullet->SetDir(Vector2D(cos(iAngle * PI / 180.f), sin(iAngle * PI / 180.f)));*/
+	int iAngle = m_iAngle + (360 / m_iBulletCount);
+	pBullet->SetDir(Vector2D(cos(iAngle * PI / 180.f), sin(iAngle * PI / 180.f)));*/
 
 	vector<int> vecRand;
 	for (int i = 0; i < m_vecMovePosition.size(); ++i)
@@ -138,4 +139,12 @@ void CBossLeftHand::BossLeftHand_Attack()
 	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
 	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
 
+	CBossLeftLaser* pLaser = new CBossLeftLaser;
+	if (pLaser != nullptr)
+	{
+		pLaser->Initialize();
+		pLaser->Set_Pos(m_tInfo.fX, m_tInfo.fY);
+
+		CObjMgr::Get_Instance()->Add_Object(LASER, pLaser);
+	}
 }

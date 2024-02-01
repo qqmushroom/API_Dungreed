@@ -23,6 +23,7 @@ public:
 
 	void		Set_PosX(float _fX) { m_tInfo.fX += _fX; }
 	void		Set_PosY(float _fY) { m_tInfo.fY += _fY; }
+	bool		Get_Active() { return m_bActive; }
 	bool		Get_Dead() { return m_bDead; }
 	void		Set_FrameKey(TCHAR* pFrameKey) { m_pFrameKey = pFrameKey; }
 

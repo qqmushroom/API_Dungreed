@@ -27,7 +27,7 @@ void CPlayer::Initialize()
 	m_tInfo = { 200.f, 450.f, 78.f, 75.f };
 	m_iMaxHp = 150;
 	m_iHp = 150;
-	m_fSpeed = 7.f;
+	m_fSpeed = 5.f;
 	m_fJumpPower = 15.f; 
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Idle/CharIdle.bmp", L"CharIdle");
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/Character/Player/Run/CharRun.bmp", L"CharRun");
@@ -146,7 +146,7 @@ void CPlayer::Key_Input()
 	
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F1))
 	{
-		//CSoundMgr::Get_Instance()->PlaySound(L"JailBoss.wav", SOUND_EFFECT, g_fVolume);
+		//CSoundMgr::Get_Instance()->PlaySound(L"JailBossEnterence.wav", SOUND_EFFECT, g_fVolume);
 		return;
 	}
 	else if (CKeyMgr::Get_Instance()->Key_Down(VK_F2))
@@ -244,14 +244,14 @@ void CPlayer::Motion_Change()
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 7;
 			m_tFrame.iMotion = 0;
-			m_tFrame.dwSpeed = 200;
+			m_tFrame.dwSpeed = 50;
 			m_tFrame.dwTime = GetTickCount();
 			break;
 		case RUN2:
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 7;
 			m_tFrame.iMotion = 1;
-			m_tFrame.dwSpeed = 200;
+			m_tFrame.dwSpeed = 50;
 			m_tFrame.dwTime = GetTickCount();
 			break;
 		}

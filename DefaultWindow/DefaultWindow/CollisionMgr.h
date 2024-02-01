@@ -14,6 +14,7 @@ public:
 	static bool		Check_Sphere(CObj* pDst, CObj* pSrc);
 
 	static void		Collision_RectEx(list<CObj*> Dst, list<CObj*> Src);
+	static bool		CollisionRects(list<CObj*> _Dest, list<CObj*> _Sour, CObj*& _ColDst, CObj*& _ColSrc);
 	static bool		Check_Rect(CObj* pDst, CObj* pSrc, float* pX, float *pY);
 	static bool		Collision_Spheres(list<CObj*> _Dest, list<CObj*> _Sour, CObj*& _ColDst, CObj*& _ColSrc);
 public:

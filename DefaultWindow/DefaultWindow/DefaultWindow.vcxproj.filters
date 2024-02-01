@@ -189,9 +189,6 @@
     <ClInclude Include="MyMenu.h">
       <Filter>03. Scene\01. Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Stage1.h">
-      <Filter>03. Scene\02. Stage</Filter>
-    </ClInclude>
     <ClInclude Include="ObjMgr.h">
       <Filter>02. Managers\01. ObjMgr</Filter>
     </ClInclude>
@@ -233,6 +230,15 @@
     </ClInclude>
     <ClInclude Include="BossRightLaser.h">
       <Filter>01. Obj\11. BossRightLaser</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage2.h">
+      <Filter>03. Scene\02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1.h">
+      <Filter>03. Scene\02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>01. Obj\06. Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -302,9 +308,6 @@
     <ClCompile Include="MyMenu.cpp">
       <Filter>03. Scene\01. Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Stage1.cpp">
-      <Filter>03. Scene\02. Stage</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>01. Obj\06. Bullet</Filter>
     </ClCompile>
@@ -334,6 +337,15 @@
     </ClCompile>
     <ClCompile Include="BossRightLaser.cpp">
       <Filter>01. Obj\11. BossRightLaser</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage2.cpp">
+      <Filter>03. Scene\02. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1.cpp">
+      <Filter>03. Scene\02. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBullet.cpp">
+      <Filter>01. Obj\06. Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

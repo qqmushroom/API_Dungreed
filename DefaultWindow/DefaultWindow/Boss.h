@@ -20,6 +20,8 @@ private:
 	void		Motion_Change();
 	void        Boss_Attack();
 
+	void Take_Damage(int _iDamage);
+
 	STATE		m_ePreState;
 	STATE		m_eCurState;
 

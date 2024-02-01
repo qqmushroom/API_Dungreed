@@ -144,3 +144,29 @@ bool CCollisionMgr::Collision_Spheres(list<CObj*> _Dest, list<CObj*> _Sour, CObj
 
 	return false;
 }
+bool CCollisionMgr::CollisionRects(list<CObj*> _Dest, list<CObj*> _Sour, CObj*& _ColDst, CObj*& _ColSrc)
+{
+	RECT    rc{};
+
+	for (auto& Dst : _Dest)
+	{
+		if (!Dst->Get_Active())
+			continue;
+
+		for (auto& Src : _Sour)
+		{
+			if (!Src->Get_Active())
+				continue;
+
+			if (IntersectRect(&rc, &Dst->Get_Rect(), &Src->Get_Rect()))
+			{
+				_ColDst = Dst;
+				_ColSrc = Src;
+
+				return true;
+			}
+		}
+	}
+
+	return false;
+}

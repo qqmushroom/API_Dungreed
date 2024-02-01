@@ -2,6 +2,12 @@
 #include "Sword.h"
 #include "BmpMgr.h"
 #include "SoundMgr.h"
+#include "ScrollMgr.h"
+#include "Vector2D.h"
+#include "ObjMgr.h"
+#include "Boss.h"
+
+
 CSword::CSword()
 {
 }
@@ -55,7 +61,10 @@ void CSword::Render(HDC hDC)
 	{
 		RECT tAttackRect = MakeAttackRect();
 
-		Ellipse(hDC, tAttackRect.left, tAttackRect.top, tAttackRect.right, tAttackRect.bottom);
+		int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+		int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
+
+		Ellipse(hDC, tAttackRect.left + iScrollX, tAttackRect.top + iScrollY, tAttackRect.right + iScrollX, tAttackRect.bottom + iScrollY);
 	}
 }
 
@@ -78,8 +87,32 @@ void CSword::Attack()
 	m_tAttackStartInfo.fCX = 100;
 	m_tAttackStartInfo.fCY = 100;
 
-	m_tAttackStartInfo.fX = (float)ptMouse.x;
-	m_tAttackStartInfo.fY = (float)ptMouse.y;
+	Vector2D vMouse = Vector2D((float)ptMouse.x, (float)ptMouse.y);
+
+	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+	int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
+
+	vMouse.fX += -iScrollX;
+	vMouse.fY += -iScrollY;
+
+	CObj* pPlayer = CObjMgr::Get_Instance()->GetBack(PLAYER);
+
+	if (pPlayer != nullptr)
+	{
+		vMouse.fX = vMouse.fX - pPlayer->Get_Info().fX;
+		vMouse.fY = vMouse.fY - pPlayer->Get_Info().fY;
+
+	// 2024.02.01 bskim: t.info fx fy를 원점으로 만들기 위해 px py에서 fx fy를 빼줌
+	}
+
+	vMouse = vMouse.Normalized();
+	vMouse.fX *= 50;
+	vMouse.fY *= 50;
+
+	// 2024.02.01 bskim: 벡터는 원점을 0, 0으로 만들어놓고 방향을 설정한다음 벡터값을 임의로 1로 설정한다음 내가 원하는 값으로 넣어서 구현
+
+	m_tAttackStartInfo.fX = vMouse.fX + pPlayer->Get_Info().fX;
+	m_tAttackStartInfo.fY = vMouse.fY + pPlayer->Get_Info().fY;
 
 	m_dwAttackStartTime = GetTickCount();
 	m_bIsAttack = true;

@@ -10,6 +10,7 @@ private:
 
 public:
 	void		Add_Object(OBJID eID, CObj* pObj);
+	void		Delete_Object(OBJID _eID);
 	int			Update();
 	void		Late_Update();
 	void		Render(HDC hDC);

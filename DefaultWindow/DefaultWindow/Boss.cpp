@@ -41,14 +41,16 @@ int CBoss::Update()
 	if (0 >= m_iHp)
 		return OBJ_DEAD;
 
-	if (m_dwTime + 200 <= GetTickCount())
-	{
+	//if (m_iHp < 150)
+	//{
+		if (m_dwTime + 200 <= GetTickCount())
+		{
 
-	    Boss_Attack();
+			Boss_Attack();
 
-	    m_dwTime = GetTickCount();
-	}
-
+			m_dwTime = GetTickCount();
+		}
+	//}
 	CObj::Update_Rect();
 
 	return OBJ_NOEVENT;
@@ -174,14 +176,14 @@ void CBoss::Boss_Attack()
 //	}
 //}
 
-//void CBoss::Take_Damage(int _iDamage)
-//{
-//	m_iBoss_Hp -= _iDamage;
-//	if (m_iHp <= 0)
-//	{
-//		m_iHp = 0;
-//
-//		Set_Dead();
-//	}
-//}
+void CBoss::Take_Damage(int _iDamage)
+{
+	m_iHp -= _iDamage;
+	if (m_iHp <= 0)
+	{
+		m_iHp = 0;
+
+		Set_Dead();
+	}
+}
 

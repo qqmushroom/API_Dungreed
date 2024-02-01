@@ -9,6 +9,7 @@
 #include "AbstractFactory.h"
 #include "Bullet.h"
 #include "BossRightHand.h"
+#include "BossRightLaser.h"
 
 CBossRightHand::CBossRightHand() :
 	m_ePreState(ST_END), m_eCurState(IDLE), m_iAngle(0)
@@ -32,9 +33,9 @@ void CBossRightHand::Initialize()
 
 	m_tFrame = { 0, 9, 0, 600, GetTickCount() };
 
-	m_vecMovePosition.emplace_back(Vector2D(1030, 515));
-	m_vecMovePosition.emplace_back(Vector2D(1030, 355));
-	m_vecMovePosition.emplace_back(Vector2D(1030, 195));
+	m_vecMovePosition.emplace_back(Vector2D(1030, 445));
+	m_vecMovePosition.emplace_back(Vector2D(1030, 265));
+	m_vecMovePosition.emplace_back(Vector2D(1030, 85));
 
 	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
 	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
@@ -137,4 +138,13 @@ void CBossRightHand::BossRightHand_Attack()
 	m_tInfo.fX = m_vecMovePosition[m_iCurrentPositionIndex].fX;
 	m_tInfo.fY = m_vecMovePosition[m_iCurrentPositionIndex].fY;
 
+
+	CBossRightLaser* pLaser = new CBossRightLaser;
+	if (pLaser != nullptr)
+	{
+		pLaser->Initialize();
+		pLaser->Set_Pos(m_tInfo.fX, m_tInfo.fY);
+
+		CObjMgr::Get_Instance()->Add_Object(LASER, pLaser);
+	}
 }

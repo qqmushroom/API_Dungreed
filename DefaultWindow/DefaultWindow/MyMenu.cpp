@@ -23,7 +23,7 @@ void CMyMenu::Initialize()
 	CBmpMgr::Get_Instance()->InsertImage(L"../Image/StartScene/StartScene.bmp", L"StartScene");
 	CSoundMgr::Get_Instance()->Initialize();
 	g_fVolume = 0.05f;
-	CSoundMgr::Get_Instance()->PlayBGM(L"Town.wav", g_fVolume);
+	CSoundMgr::Get_Instance()->PlayBGM(L"Title.wav", g_fVolume);
 
 	/*CObj*		pButton = CAbstractFactory<CMyButton>::Create(200.f, 400.f);
 	pButton->Set_FrameKey(L"Start");
@@ -63,6 +63,6 @@ void CMyMenu::Render(HDC hDC)
 
 void CMyMenu::Release()
 {
-	CObjMgr::Get_Instance()->Delete_ID(BUTTON);
 	CSoundMgr::Destroy_Instance();
+	CObjMgr::Get_Instance()->Delete_Object(BUTTON);
 }

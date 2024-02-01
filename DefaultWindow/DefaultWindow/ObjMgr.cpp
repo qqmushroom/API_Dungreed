@@ -21,6 +21,12 @@ void CObjMgr::Add_Object(OBJID eID, CObj * pObj)
 	m_ObjList[eID].push_back(pObj);
 }
 
+void CObjMgr::Delete_Object(OBJID _eID)
+{
+	for_each(m_ObjList[_eID].begin(), m_ObjList[_eID].end(), Safe_Delete<CObj*>);
+	m_ObjList[_eID].clear();
+}
+
 int CObjMgr::Update()
 {
 	for (size_t i = 0; i < END; ++i)
