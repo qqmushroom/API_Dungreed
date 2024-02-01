@@ -240,6 +240,9 @@
     <ClInclude Include="PlayerBullet.h">
       <Filter>01. Obj\06. Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="SwordAttack.h">
+      <Filter>01. Obj\02. Weapon\00. Sword</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>01. Obj\06. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordAttack.cpp">
+      <Filter>01. Obj\02. Weapon\00. Sword</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 #include "Vector2D.h"
 #include "ObjMgr.h"
 #include "Boss.h"
+#include "SwordAttack.h"
 
 
 CSword::CSword()
@@ -57,7 +58,7 @@ void CSword::Render(HDC hDC)
 {
 	CWeapon::Render(hDC);
 	
-	if (m_bIsAttack)
+	/*if (m_bIsAttack)
 	{
 		RECT tAttackRect = MakeAttackRect();
 
@@ -65,7 +66,7 @@ void CSword::Render(HDC hDC)
 		int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 
 		Ellipse(hDC, tAttackRect.left + iScrollX, tAttackRect.top + iScrollY, tAttackRect.right + iScrollX, tAttackRect.bottom + iScrollY);
-	}
+	}*/
 }
 
 void CSword::Release()
@@ -106,13 +107,26 @@ void CSword::Attack()
 	}
 
 	vMouse = vMouse.Normalized();
-	vMouse.fX *= 50;
-	vMouse.fY *= 50;
+	vMouse.fX *= 30;
+	vMouse.fY *= 30;
 
 	// 2024.02.01 bskim: 벡터는 원점을 0, 0으로 만들어놓고 방향을 설정한다음 벡터값을 임의로 1로 설정한다음 내가 원하는 값으로 넣어서 구현
 
-	m_tAttackStartInfo.fX = vMouse.fX + pPlayer->Get_Info().fX;
-	m_tAttackStartInfo.fY = vMouse.fY + pPlayer->Get_Info().fY;
+	/*m_tAttackStartInfo.fX = vMouse.fX + pPlayer->Get_Info().fX;
+	m_tAttackStartInfo.fY = vMouse.fY + pPlayer->Get_Info().fY;*/
+
+	CSwordAttack* pSwordAttack = new CSwordAttack;
+	if (pSwordAttack != nullptr)
+	{
+		pSwordAttack->Initialize();
+		pSwordAttack->Set_Pos(vMouse.fX + pPlayer->Get_Info().fX, 
+											vMouse.fY + pPlayer->Get_Info().fY + 10);
+
+		pSwordAttack->SetAttackDir(vMouse.Normalized());
+
+		CObjMgr::Get_Instance()->Add_Object(PLAYER_BULLET, pSwordAttack);
+	}
+
 
 	m_dwAttackStartTime = GetTickCount();
 	m_bIsAttack = true;
